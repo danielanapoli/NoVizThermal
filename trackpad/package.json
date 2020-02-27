@@ -1,0 +1,20 @@
+{
+    "name": "thermal_trackpad",
+    "version": "0.0.0",
+    "description": "",
+    "main": "socketio.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node socketio.js"
+    },
+    "author": "Daniela Napoli",
+    "license": "ISC",
+    "dependencies": {
+        "socket.io": "^2.3.0",
+        "osc-min": "^1.1.2",
+        "dgram": "^1.0.1",
+        "fs": "0.0.1-security",
+        "express": "^4.16.4",
+        "request": "^2.88.0"
+    }
+}
