@@ -5,46 +5,52 @@
 <head>
   <meta charset="utf-8">
   <title>OSC Communication</title>
+
+  <!--JS-->
   <script src="/socket.io/socketio.js"></script>
+  
+  <!--BOOTSTRAP JS-->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+  <!--BOOTSTRAP CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 
 <body>
+  <!--
   <h2>OSC Communication between Arduino and Browser</h2>
   Buttons to control LED
   <button type="button" id="x" value="1" onclick="myFunction()" style="background-color:green;">ON</button>
   <button type="button" id="y" value="2" onclick="myFunction1()" style="background-color:red;">OFF</button>
   <h2>Output From Arduino:</h2>
   <span id="output"></span>
+  -->
+
+  <div class="container-sm">
+    <h2>Choose your test variation...</h2>
+    <div class="row">
+      <div class="col-sm">
+        <a class="btn btn-primary" href="#" role="button">Variation 1</a>
+      </div>
+      <div class="col-sm">
+        <a class="btn btn-primary" href="#" role="button">Variation 2</a>
+      </div>
+      <div class="col-sm">
+        <a class="btn btn-primary" href="#" role="button">Variation 3</a>
+      </div>
+    </div>
+  </div>
 
 
-  <script>
-    var socket = io.connect();
 
+  <form action="http://google.com">
+    <input type="submit" value="Go to Google" formtarget="_blank"/>
+  </form>
 
-    socket.on('osc', function (data) {
-      if (data.x == 1) {
-        document.getElementById("output").innerHTML = "LED ON";
-      }
-      if (data.x == 2) {
-        document.getElementById("output").innerHTML = "LED OFF";
-      }
-    });
-
-
-    function myFunction() {
-      socket.emit('browser', {
-        x: 1 || 0
-      });
-    }
-
-
-    function myFunction1() {
-      socket.emit('browser', {
-        x: 2 || 0
-      });
-    }
-  </script>
+  <script src="communication.js"></script>
 </body>
 
 

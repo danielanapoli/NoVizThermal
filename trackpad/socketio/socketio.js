@@ -1,3 +1,6 @@
+//BASE CODE SOURCE: https://maker.pro/arduino/projects/learn-how-to-enable-communication-between-an-arduino-and-web-browser
+
+
 var http = require('http'),
     socketio = require('socket.io'),
     fs = require('fs'),
@@ -11,7 +14,7 @@ var http_server = http.createServer(function(req, res) {
  
     if(err) {
       res.writeHead(500);
-      return res.end('Error loading socketio.html');
+      return res.end('Error loading socket.io.html');
     }
  
     res.writeHead(200);
