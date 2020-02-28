@@ -11,10 +11,16 @@ const dgram = require('dgram');
 let remote_osc_ip;
 const PORT = 8080;
 
+//middleware
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+//forms
+//https://flaviocopes.com/express-forms/
+//https://www.tutorialspoint.com/expressjs/expressjs_form_data.htm
+
+//serve static files
 app.use(express.static(__dirname)); //current directory is root
 
 io.on('connection', function(socket) {
