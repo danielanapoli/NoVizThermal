@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8">
+  <title>Usability Testing Administration Page</title>
+
+  <!--JS-->
+  <script src="/socket.io/socketio.js"></script>
+  <script src="communication.js"></script>
+  
+  <!--BOOTSTRAP JS-->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+  <!--BOOTSTRAP CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+
+<body>
+
+  <div class="jumbotron">
+    <h1 class="display-4">Safety Assessments</h1>
+    <p class="lead"> Daniela Napoli, daniela.napoli@carleton.ca, School of Computer Science, Carleton University   
+    <hr class="my-4">
+    <a class="btn btn-secondary btn-sm" href="index.html" role="button">Start over</a>
+  </div>
+
+  <div class="container">
+    <form>
+      <div class="row">
+        <div class="col-md-4">
+          <input class="form-control" type="text" placeholder="Participant ID">
+          <input class="form-control" type="text" value="Variation 1" readonly>
+        </div>
+      </div>
+
+    </br>
+      <a href="test.html" target="_blank"><h3>Website 1</h3></a>
+    </br>
+        <!--Safe/Unsafe-->
+        <label class="assessment">The above website is...</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="assessment_site1" id="assessment_safe" value="safe">
+            <label class="form-check-label" for="assessment_safe">
+              Safe
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="assessment_site1" id="assessment_unsafe" value="unsafe">
+            <label class="form-check-label" for="assessment_unsafe">
+              Unsafe
+            </label>
+          </div>
+        </br>
+        <!--Confidence Rating-->
+        <label class="confidence-level">I am confident in my assessment.</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="confidence_site1" id="confidence0" value="0">
+            <label class="form-check-label" for="confidence0">
+              0 - Strongly Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="confidence_site1" id="confidence1" value="1">
+            <label class="form-check-label" for="confidence1">
+              1 - Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="confidence_site1" id="confidence2" value="2">
+            <label class="form-check-label" for="confidence2">
+              2 - Neutral
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="confidence_site1" id="confidence3" value="3">
+            <label class="form-check-label" for="confidence3">
+              3 - Agree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="confidence_site1" id="confidence4" value="4">
+            <label class="form-check-label" for="confidence4">
+              4 - Strongly Agree
+            </label>
+          </div>      
+        </br>
+        <!--Ease Rating-->
+        <label class="confidence-level">It was easy for me to assess this website.</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="ease_site1" id="ease0" value="0">
+            <label class="form-check-label" for="ease0">
+              0 - Strongly Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="ease_site1" id="ease1" value="1">
+            <label class="form-check-label" for="ease1">
+              1 - Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="ease_site1" id="ease2" value="2">
+            <label class="form-check-label" for="ease2">
+              2 - Neutral
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="ease_site1" id="ease3" value="3">
+            <label class="form-check-label" for="ease3">
+              3 - Agree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="ease_site1" id="ease4" value="4">
+            <label class="form-check-label" for="ease4">
+              4 - Strongly Agree
+            </label>
+          </div>   
+        </br>
+        <hr>
+
+        <a href="test.html" target="_blank"><h3>Website 2</h3></a>
+      </br>
+          <!--Safe/Unsafe-->
+          <label class="assessment">The above website is...</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="assessment_site2" id="assessment_safe" value="safe">
+              <label class="form-check-label" for="assessment_safe">
+                Safe
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="assessment_site2" id="assessment_unsafe" value="unsafe">
+              <label class="form-check-label" for="assessment_unsafe">
+                Unsafe
+              </label>
+            </div>
+          </br>
+          <!--Confidence Rating-->
+          <label class="confidence-level">I am confident in my assessment.</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="confidence_site2" id="confidence0" value="0">
+              <label class="form-check-label" for="confidence0">
+                0 - Strongly Disagree
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="confidence_site2" id="confidence1" value="1">
+              <label class="form-check-label" for="confidence1">
+                1 - Disagree
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="confidence_site2" id="confidence2" value="2">
+              <label class="form-check-label" for="confidence2">
+                2 - Neutral
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="confidence_site2" id="confidence3" value="3">
+              <label class="form-check-label" for="confidence3">
+                3 - Agree
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="confidence_site2" id="confidence4" value="4">
+              <label class="form-check-label" for="confidence4">
+                4 - Strongly Agree
+              </label>
+            </div>      
+          </br>
+          <!--Ease Rating-->
+          <label class="confidence-level">It was easy for me to assess this website.</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="ease_site2" id="ease0" value="0">
+              <label class="form-check-label" for="ease0">
+                0 - Strongly Disagree
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="ease_site2" id="ease1" value="1">
+              <label class="form-check-label" for="ease1">
+                1 - Disagree
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="ease_site2" id="ease2" value="2">
+              <label class="form-check-label" for="ease2">
+                2 - Neutral
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="ease_site2" id="ease3" value="3">
+              <label class="form-check-label" for="ease3">
+                3 - Agree
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="ease_site2" id="ease4" value="4">
+              <label class="form-check-label" for="ease4">
+                4 - Strongly Agree
+              </label>
+            </div>   
+          </br>
+          <hr>
+
+          <a href="test.html" target="_blank"><h3>Website 3</h3></a>
+        </br>
+            <!--Safe/Unsafe-->
+            <label class="assessment">The above website is...</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_safe" value="safe">
+                <label class="form-check-label" for="assessment_safe">
+                  Safe
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_unsafe" value="unsafe">
+                <label class="form-check-label" for="assessment_unsafe">
+                  Unsafe
+                </label>
+              </div>
+            </br>
+            <!--Confidence Rating-->
+            <label class="confidence-level">I am confident in my assessment.</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="confidence_site3" id="confidence0" value="0">
+                <label class="form-check-label" for="confidence0">
+                  0 - Strongly Disagree
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="confidence_site3" id="confidence1" value="1">
+                <label class="form-check-label" for="confidence1">
+                  1 - Disagree
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="confidence_site3" id="confidence2" value="2">
+                <label class="form-check-label" for="confidence2">
+                  2 - Neutral
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="confidence_site3" id="confidence3" value="3">
+                <label class="form-check-label" for="confidence3">
+                  3 - Agree
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="confidence_site3" id="confidence4" value="4">
+                <label class="form-check-label" for="confidence4">
+                  4 - Strongly Agree
+                </label>
+              </div>      
+            </br>
+            <!--Ease Rating-->
+            <label class="confidence-level">It was easy for me to assess this website.</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="ease_site3" id="ease0" value="0">
+                <label class="form-check-label" for="ease0">
+                  0 - Strongly Disagree
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="ease_site3" id="ease1" value="1">
+                <label class="form-check-label" for="ease1">
+                  1 - Disagree
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="ease_site3" id="ease2" value="2">
+                <label class="form-check-label" for="ease2">
+                  2 - Neutral
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="ease_site3" id="ease3" value="3">
+                <label class="form-check-label" for="ease3">
+                  3 - Agree
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="ease_site3" id="ease4" value="4">
+                <label class="form-check-label" for="ease4">
+                  4 - Strongly Agree
+                </label>
+              </div>   
+            </br>
+            <hr>
+
+            <a href="test.html" target="_blank"><h3>Website 4</h3></a>
+          </br>
+              <!--Safe/Unsafe-->
+              <label class="assessment">The above website is...</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="assessment_site4" id="assessment_safe" value="safe">
+                  <label class="form-check-label" for="assessment_safe">
+                    Safe
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="assessment_site4" id="assessment_unsafe" value="unsafe">
+                  <label class="form-check-label" for="assessment_unsafe">
+                    Unsafe
+                  </label>
+                </div>
+              </br>
+              <!--Confidence Rating-->
+              <label class="confidence-level">I am confident in my assessment.</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="confidence_site4" id="confidence0" value="0">
+                  <label class="form-check-label" for="confidence0">
+                    0 - Strongly Disagree
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="confidence_site4" id="confidence1" value="1">
+                  <label class="form-check-label" for="confidence1">
+                    1 - Disagree
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="confidence_site4" id="confidence2" value="2">
+                  <label class="form-check-label" for="confidence2">
+                    2 - Neutral
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="confidence_site4" id="confidence3" value="3">
+                  <label class="form-check-label" for="confidence3">
+                    3 - Agree
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="confidence_site4" id="confidence4" value="4">
+                  <label class="form-check-label" for="confidence4">
+                    4 - Strongly Agree
+                  </label>
+                </div>      
+              </br>
+              <!--Ease Rating-->
+              <label class="confidence-level">It was easy for me to assess this website.</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="ease_site4" id="ease0" value="0">
+                  <label class="form-check-label" for="ease0">
+                    0 - Strongly Disagree
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="ease_site4" id="ease1" value="1">
+                  <label class="form-check-label" for="ease1">
+                    1 - Disagree
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="ease_site4" id="ease2" value="2">
+                  <label class="form-check-label" for="ease2">
+                    2 - Neutral
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="ease_site4" id="ease3" value="3">
+                  <label class="form-check-label" for="ease3">
+                    3 - Agree
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="ease_site4" id="ease4" value="4">
+                  <label class="form-check-label" for="ease4">
+                    4 - Strongly Agree
+                  </label>
+                </div>   
+              </br>
+              <hr>
+
+              <a href="test.html" target="_blank"><h3>Website 5</h3></a>
+            </br>
+                <!--Safe/Unsafe-->
+                <label class="assessment">The above website is...</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="assessment_site5" id="assessment_safe" value="safe">
+                    <label class="form-check-label" for="assessment_safe">
+                      Safe
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="assessment_site5" id="assessment_unsafe" value="unsafe">
+                    <label class="form-check-label" for="assessment_unsafe">
+                      Unsafe
+                    </label>
+                  </div>
+                </br>
+                <!--Confidence Rating-->
+                <label class="confidence-level">I am confident in my assessment.</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="confidence_site5" id="confidence0" value="0">
+                    <label class="form-check-label" for="confidence0">
+                      0 - Strongly Disagree
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="confidence_site5" id="confidence1" value="1">
+                    <label class="form-check-label" for="confidence1">
+                      1 - Disagree
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="confidence_site5" id="confidence2" value="2">
+                    <label class="form-check-label" for="confidence2">
+                      2 - Neutral
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="confidence_site5" id="confidence3" value="3">
+                    <label class="form-check-label" for="confidence3">
+                      3 - Agree
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="confidence_site5" id="confidence4" value="4">
+                    <label class="form-check-label" for="confidence4">
+                      4 - Strongly Agree
+                    </label>
+                  </div>      
+                </br>
+                <!--Ease Rating-->
+                <label class="confidence-level">It was easy for me to assess this website.</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="ease_site5" id="ease0" value="0">
+                    <label class="form-check-label" for="ease0">
+                      0 - Strongly Disagree
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="ease_site5" id="ease1" value="1">
+                    <label class="form-check-label" for="ease1">
+                      1 - Disagree
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="ease_site5" id="ease2" value="2">
+                    <label class="form-check-label" for="ease2">
+                      2 - Neutral
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="ease_site5" id="ease3" value="3">
+                    <label class="form-check-label" for="ease3">
+                      3 - Agree
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="ease_site5" id="ease4" value="4">
+                    <label class="form-check-label" for="ease4">
+                      4 - Strongly Agree
+                    </label>
+                  </div>   
+                </br>
+
+                <a href="test.html" target="_blank"><h3>Website 6</h3></a>
+              </br>
+                  <!--Safe/Unsafe-->
+                  <label class="assessment">The above website is...</label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="assessment_site6" id="assessment_safe" value="safe">
+                      <label class="form-check-label" for="assessment_safe">
+                        Safe
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="assessment_site6" id="assessment_unsafe" value="unsafe">
+                      <label class="form-check-label" for="assessment_unsafe">
+                        Unsafe
+                      </label>
+                    </div>
+                  </br>
+                  <!--Confidence Rating-->
+                  <label class="confidence-level">I am confident in my assessment.</label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="confidence_site6" id="confidence0" value="0">
+                      <label class="form-check-label" for="confidence0">
+                        0 - Strongly Disagree
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="confidence_site6" id="confidence1" value="1">
+                      <label class="form-check-label" for="confidence1">
+                        1 - Disagree
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="confidence_site6" id="confidence2" value="2">
+                      <label class="form-check-label" for="confidence2">
+                        2 - Neutral
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="confidence_site6" id="confidence3" value="3">
+                      <label class="form-check-label" for="confidence3">
+                        3 - Agree
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="confidence_site6" id="confidence4" value="4">
+                      <label class="form-check-label" for="confidence4">
+                        4 - Strongly Agree
+                      </label>
+                    </div>      
+                  </br>
+                  <!--Ease Rating-->
+                  <label class="confidence-level">It was easy for me to assess this website.</label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="ease_site6" id="ease0" value="0">
+                      <label class="form-check-label" for="ease0">
+                        0 - Strongly Disagree
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="ease_site6" id="ease1" value="1">
+                      <label class="form-check-label" for="ease1">
+                        1 - Disagree
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="ease_site6" id="ease2" value="2">
+                      <label class="form-check-label" for="ease2">
+                        2 - Neutral
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="ease_site6" id="ease3" value="3">
+                      <label class="form-check-label" for="ease3">
+                        3 - Agree
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="ease_site6" id="ease4" value="4">
+                      <label class="form-check-label" for="ease4">
+                        4 - Strongly Agree
+                      </label>
+                    </div>   
+                  </br>
+                  <hr>
+
+                  <a href="test.html" target="_blank"><h3>Website 7</h3></a>
+                </br>
+                    <!--Safe/Unsafe-->
+                    <label class="assessment">The above website is...</label>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="assessment_site7" id="assessment_safe" value="safe">
+                        <label class="form-check-label" for="assessment_safe">
+                          Safe
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="assessment_site7" id="assessment_unsafe" value="unsafe">
+                        <label class="form-check-label" for="assessment_unsafe">
+                          Unsafe
+                        </label>
+                      </div>
+                    </br>
+                    <!--Confidence Rating-->
+                    <label class="confidence-level">I am confident in my assessment.</label>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="confidence_site7" id="confidence0" value="0">
+                        <label class="form-check-label" for="confidence0">
+                          0 - Strongly Disagree
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="confidence_site7" id="confidence1" value="1">
+                        <label class="form-check-label" for="confidence1">
+                          1 - Disagree
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="confidence_site7" id="confidence2" value="2">
+                        <label class="form-check-label" for="confidence2">
+                          2 - Neutral
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="confidence_site7" id="confidence3" value="3">
+                        <label class="form-check-label" for="confidence3">
+                          3 - Agree
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="confidence_site7" id="confidence4" value="4">
+                        <label class="form-check-label" for="confidence4">
+                          4 - Strongly Agree
+                        </label>
+                      </div>      
+                    </br>
+                    <!--Ease Rating-->
+                    <label class="confidence-level">It was easy for me to assess this website.</label>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="ease_site7" id="ease0" value="0">
+                        <label class="form-check-label" for="ease0">
+                          0 - Strongly Disagree
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="ease_site7" id="ease1" value="1">
+                        <label class="form-check-label" for="ease1">
+                          1 - Disagree
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="ease_site7" id="ease2" value="2">
+                        <label class="form-check-label" for="ease2">
+                          2 - Neutral
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="ease_site7" id="ease3" value="3">
+                        <label class="form-check-label" for="ease3">
+                          3 - Agree
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="ease_site7" id="ease4" value="4">
+                        <label class="form-check-label" for="ease4">
+                          4 - Strongly Agree
+                        </label>
+                      </div>   
+                    </br>
+                    <hr>
+
+                    <a href="test.html" target="_blank"><h3>Website 8</h3></a>
+                  </br>
+                      <!--Safe/Unsafe-->
+                      <label class="assessment">The above website is...</label>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="assessment_site8" id="assessment_safe" value="safe">
+                          <label class="form-check-label" for="assessment_safe">
+                            Safe
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="assessment_site8" id="assessment_unsafe" value="unsafe">
+                          <label class="form-check-label" for="assessment_unsafe">
+                            Unsafe
+                          </label>
+                        </div>
+                      </br>
+                      <!--Confidence Rating-->
+                      <label class="confidence-level">I am confident in my assessment.</label>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="confidence_site8" id="confidence0" value="0">
+                          <label class="form-check-label" for="confidence0">
+                            0 - Strongly Disagree
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="confidence_site8" id="confidence1" value="1">
+                          <label class="form-check-label" for="confidence1">
+                            1 - Disagree
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="confidence_site8" id="confidence2" value="2">
+                          <label class="form-check-label" for="confidence2">
+                            2 - Neutral
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="confidence_site8" id="confidence3" value="3">
+                          <label class="form-check-label" for="confidence3">
+                            3 - Agree
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="confidence_site8" id="confidence4" value="4">
+                          <label class="form-check-label" for="confidence4">
+                            4 - Strongly Agree
+                          </label>
+                        </div>      
+                      </br>
+                      <!--Ease Rating-->
+                      <label class="confidence-level">It was easy for me to assess this website.</label>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="ease_site8" id="ease0" value="0">
+                          <label class="form-check-label" for="ease0">
+                            0 - Strongly Disagree
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="ease_site8" id="ease1" value="1">
+                          <label class="form-check-label" for="ease1">
+                            1 - Disagree
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="ease_site8" id="ease2" value="2">
+                          <label class="form-check-label" for="ease2">
+                            2 - Neutral
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="ease_site8" id="ease3" value="3">
+                          <label class="form-check-label" for="ease3">
+                            3 - Agree
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="ease_site8" id="ease4" value="4">
+                          <label class="form-check-label" for="ease4">
+                            4 - Strongly Agree
+                          </label>
+                        </div>   
+                      </br>
+                      <hr>
+
+                      <a href="test.html" target="_blank"><h3>Website 9</h3></a>
+                    </br>
+                        <!--Safe/Unsafe-->
+                        <label class="assessment">The above website is...</label>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="assessment_site9" id="assessment_safe" value="safe">
+                            <label class="form-check-label" for="assessment_safe">
+                              Safe
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="assessment_site9" id="assessment_unsafe" value="unsafe">
+                            <label class="form-check-label" for="assessment_unsafe">
+                              Unsafe
+                            </label>
+                          </div>
+                        </br>
+                        <!--Confidence Rating-->
+                        <label class="confidence-level">I am confident in my assessment.</label>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="confidence_site9" id="confidence0" value="0">
+                            <label class="form-check-label" for="confidence0">
+                              0 - Strongly Disagree
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="confidence_site9" id="confidence1" value="1">
+                            <label class="form-check-label" for="confidence1">
+                              1 - Disagree
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="confidence_site9" id="confidence2" value="2">
+                            <label class="form-check-label" for="confidence2">
+                              2 - Neutral
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="confidence_site9" id="confidence3" value="3">
+                            <label class="form-check-label" for="confidence3">
+                              3 - Agree
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="confidence_site9" id="confidence4" value="4">
+                            <label class="form-check-label" for="confidence4">
+                              4 - Strongly Agree
+                            </label>
+                          </div>      
+                        </br>
+                        <!--Ease Rating-->
+                        <label class="confidence-level">It was easy for me to assess this website.</label>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ease_site9" id="ease0" value="0">
+                            <label class="form-check-label" for="ease0">
+                              0 - Strongly Disagree
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ease_site9" id="ease1" value="1">
+                            <label class="form-check-label" for="ease1">
+                              1 - Disagree
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ease_site9" id="ease2" value="2">
+                            <label class="form-check-label" for="ease2">
+                              2 - Neutral
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ease_site9" id="ease3" value="3">
+                            <label class="form-check-label" for="ease3">
+                              3 - Agree
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ease_site9" id="ease4" value="4">
+                            <label class="form-check-label" for="ease4">
+                              4 - Strongly Agree
+                            </label>
+                          </div>   
+                        </br>                        
+
+      <button type="submit" class="btn btn-primary">Submit Assessments</button>
+      </br>
+
+    </form>
+  </div>
+</body>
+</html>
