@@ -18,7 +18,7 @@
   <!--BOOTSTRAP CSS-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-
+  
 
 <body>
 
@@ -30,12 +30,15 @@
   </div>
 
   <div class="container">
-    <form>
-      <div class="row">
+    <form method="post", action="/handler">
+
+      <!-- <div class="row">
         <div class="col-md-4">
-          <input class="form-control" type="text" placeholder="Participant ID">
-          <input class="form-control" type="text" value="Variation 1" readonly>
         </div>
+      </div> -->
+      <div class="form-group">
+        <input class="form-control" type="text" name="participantID" placeholder="Participant ID">
+        <input class="form-control" type="text" name="variation" value="1" hidden>
       </div>
 
     </br>
@@ -44,15 +47,21 @@
         <!--Safe/Unsafe-->
         <label class="assessment">The above website is...</label>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="assessment_site1" id="assessment_safe" value="safe">
+            <input class="form-check-input" type="radio" name="assessment_site1" id="assessment_high" value="high">
             <label class="form-check-label" for="assessment_safe">
-              Safe
+              High risk
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="assessment_site1" id="assessment_unsafe" value="unsafe">
+            <input class="form-check-input" type="radio" name="assessment_site1" id="assessment_med" value="med">
             <label class="form-check-label" for="assessment_unsafe">
-              Unsafe
+              Medium risk
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="assessment_site1" id="assessment_low" value="low">
+            <label class="form-check-label" for="assessment_unsafe">
+              Low risk
             </label>
           </div>
         </br>
@@ -126,21 +135,27 @@
 
         <a href="test.html" target="_blank"><h3>Website 2</h3></a>
       </br>
-          <!--Safe/Unsafe-->
-          <label class="assessment">The above website is...</label>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="assessment_site2" id="assessment_safe" value="safe">
-              <label class="form-check-label" for="assessment_safe">
-                Safe
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="assessment_site2" id="assessment_unsafe" value="unsafe">
-              <label class="form-check-label" for="assessment_unsafe">
-                Unsafe
-              </label>
-            </div>
-          </br>
+        <!--Safe/Unsafe-->
+        <label class="assessment">The above website is...</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="assessment_site2" id="assessment_high" value="high">
+          <label class="form-check-label" for="assessment_safe">
+            High risk
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="assessment_site2" id="assessment_med" value="med">
+          <label class="form-check-label" for="assessment_unsafe">
+            Medium risk
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="assessment_site2" id="assessment_low" value="low">
+          <label class="form-check-label" for="assessment_unsafe">
+            Low risk
+          </label>
+        </div>
+      </br>
           <!--Confidence Rating-->
           <label class="confidence-level">I am confident in my assessment.</label>
             <div class="form-check">
@@ -213,18 +228,24 @@
         </br>
             <!--Safe/Unsafe-->
             <label class="assessment">The above website is...</label>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_safe" value="safe">
-                <label class="form-check-label" for="assessment_safe">
-                  Safe
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_unsafe" value="unsafe">
-                <label class="form-check-label" for="assessment_unsafe">
-                  Unsafe
-                </label>
-              </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_high" value="high">
+              <label class="form-check-label" for="assessment_safe">
+                High risk
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_med" value="med">
+              <label class="form-check-label" for="assessment_unsafe">
+                Medium risk
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_low" value="low">
+              <label class="form-check-label" for="assessment_unsafe">
+                Low risk
+              </label>
+            </div>
             </br>
             <!--Confidence Rating-->
             <label class="confidence-level">I am confident in my assessment.</label>
@@ -298,18 +319,24 @@
           </br>
               <!--Safe/Unsafe-->
               <label class="assessment">The above website is...</label>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="assessment_site4" id="assessment_safe" value="safe">
-                  <label class="form-check-label" for="assessment_safe">
-                    Safe
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="assessment_site4" id="assessment_unsafe" value="unsafe">
-                  <label class="form-check-label" for="assessment_unsafe">
-                    Unsafe
-                  </label>
-                </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_high" value="high">
+                <label class="form-check-label" for="assessment_safe">
+                  High risk
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_med" value="med">
+                <label class="form-check-label" for="assessment_unsafe">
+                  Medium risk
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_low" value="low">
+                <label class="form-check-label" for="assessment_unsafe">
+                  Low risk
+                </label>
+              </div>
               </br>
               <!--Confidence Rating-->
               <label class="confidence-level">I am confident in my assessment.</label>
@@ -383,18 +410,24 @@
             </br>
                 <!--Safe/Unsafe-->
                 <label class="assessment">The above website is...</label>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="assessment_site5" id="assessment_safe" value="safe">
-                    <label class="form-check-label" for="assessment_safe">
-                      Safe
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="assessment_site5" id="assessment_unsafe" value="unsafe">
-                    <label class="form-check-label" for="assessment_unsafe">
-                      Unsafe
-                    </label>
-                  </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="assessment_site5" id="assessment_high" value="high">
+                  <label class="form-check-label" for="assessment_safe">
+                    High risk
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="assessment_site5" id="assessment_med" value="med">
+                  <label class="form-check-label" for="assessment_unsafe">
+                    Medium risk
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="assessment_site5" id="assessment_low" value="low">
+                  <label class="form-check-label" for="assessment_unsafe">
+                    Low risk
+                  </label>
+                </div>
                 </br>
                 <!--Confidence Rating-->
                 <label class="confidence-level">I am confident in my assessment.</label>
@@ -465,20 +498,26 @@
 
                 <a href="test.html" target="_blank"><h3>Website 6</h3></a>
               </br>
-                  <!--Safe/Unsafe-->
-                  <label class="assessment">The above website is...</label>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="assessment_site6" id="assessment_safe" value="safe">
-                      <label class="form-check-label" for="assessment_safe">
-                        Safe
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="assessment_site6" id="assessment_unsafe" value="unsafe">
-                      <label class="form-check-label" for="assessment_unsafe">
-                        Unsafe
-                      </label>
-                    </div>
+                <!--Safe/Unsafe-->
+                <label class="assessment">The above website is...</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="assessment_site6" id="assessment_high" value="high">
+                  <label class="form-check-label" for="assessment_safe">
+                    High risk
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="assessment_site6" id="assessment_med" value="med">
+                  <label class="form-check-label" for="assessment_unsafe">
+                    Medium risk
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="assessment_site6" id="assessment_low" value="low">
+                  <label class="form-check-label" for="assessment_unsafe">
+                    Low risk
+                  </label>
+                </div>
                   </br>
                   <!--Confidence Rating-->
                   <label class="confidence-level">I am confident in my assessment.</label>
@@ -552,18 +591,24 @@
                 </br>
                     <!--Safe/Unsafe-->
                     <label class="assessment">The above website is...</label>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="assessment_site7" id="assessment_safe" value="safe">
-                        <label class="form-check-label" for="assessment_safe">
-                          Safe
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="assessment_site7" id="assessment_unsafe" value="unsafe">
-                        <label class="form-check-label" for="assessment_unsafe">
-                          Unsafe
-                        </label>
-                      </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="assessment_site7" id="assessment_high" value="high">
+                      <label class="form-check-label" for="assessment_safe">
+                        High risk
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="assessment_site7" id="assessment_med" value="med">
+                      <label class="form-check-label" for="assessment_unsafe">
+                        Medium risk
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="assessment_site7" id="assessment_low" value="low">
+                      <label class="form-check-label" for="assessment_unsafe">
+                        Low risk
+                      </label>
+                    </div>
                     </br>
                     <!--Confidence Rating-->
                     <label class="confidence-level">I am confident in my assessment.</label>
@@ -637,18 +682,24 @@
                   </br>
                       <!--Safe/Unsafe-->
                       <label class="assessment">The above website is...</label>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="assessment_site8" id="assessment_safe" value="safe">
-                          <label class="form-check-label" for="assessment_safe">
-                            Safe
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="assessment_site8" id="assessment_unsafe" value="unsafe">
-                          <label class="form-check-label" for="assessment_unsafe">
-                            Unsafe
-                          </label>
-                        </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="assessment_site8" id="assessment_high" value="high">
+                        <label class="form-check-label" for="assessment_safe">
+                          High risk
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="assessment_site8" id="assessment_med" value="med">
+                        <label class="form-check-label" for="assessment_unsafe">
+                          Medium risk
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="assessment_site8" id="assessment_low" value="low">
+                        <label class="form-check-label" for="assessment_unsafe">
+                          Low risk
+                        </label>
+                      </div>
                       </br>
                       <!--Confidence Rating-->
                       <label class="confidence-level">I am confident in my assessment.</label>
@@ -722,18 +773,24 @@
                     </br>
                         <!--Safe/Unsafe-->
                         <label class="assessment">The above website is...</label>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="assessment_site9" id="assessment_safe" value="safe">
-                            <label class="form-check-label" for="assessment_safe">
-                              Safe
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="assessment_site9" id="assessment_unsafe" value="unsafe">
-                            <label class="form-check-label" for="assessment_unsafe">
-                              Unsafe
-                            </label>
-                          </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="assessment_site9" id="assessment_high" value="high">
+                          <label class="form-check-label" for="assessment_high">
+                            High risk
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="assessment_site9" id="assessment_med" value="med">
+                          <label class="form-check-label" for="assessment_med">
+                            Medium risk
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="assessment_site9" id="assessment_low" value="low">
+                          <label class="form-check-label" for="assessment_low">
+                            Low risk
+                          </label>
+                        </div>
                         </br>
                         <!--Confidence Rating-->
                         <label class="confidence-level">I am confident in my assessment.</label>

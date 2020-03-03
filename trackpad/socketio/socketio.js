@@ -3,6 +3,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const path = require('path');
+const ObjectsToCSV = require('objects-to-csv'); //export form data to csv
 
 //arduino extras
 //https://maker.pro/arduino/projects/learn-how-to-enable-communication-between-an-arduino-and-web-browser
@@ -11,18 +12,34 @@ const dgram = require('dgram');
 let remote_osc_ip;
 const PORT = 8080;
 
+//serve static files
+app.use(express.static(__dirname)); //current directory is root
+
 //middleware
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-//forms
-//https://flaviocopes.com/express-forms/
-//https://www.tutorialspoint.com/expressjs/expressjs_form_data.htm
+//handle form data
+const bodyParser = require('body-parser'); 
+app.use(bodyParser.json()); // to support JSON bodies
+app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies
 
-//serve static files
-app.use(express.static(__dirname)); //current directory is root
 
+app.post('/handler', function(req, res){
+  if(!req.body){
+    console.log("Something went wrong with form.")
+    res.sendFile(__dirname + '/error.html');
+  }
+  else{
+    console.log(req.body); //res.send(req.body.optradio);
+    let otc = new ObjectsToCSV({data, append: true});
+    let csv = otc.getCSV();
+    res.sendFile(__dirname + '/thankyou.html');
+  }
+})
+
+//socket comms
 io.on('connection', function(socket) {
   socket.on('browser', function(data) {
     if(! remote_osc_ip) {
