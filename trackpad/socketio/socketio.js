@@ -40,7 +40,28 @@ app.post('/handler', function(req, res){
 })
 
 //socket comms
+var io = socketio(http_server);
+ 
+var udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
+ 
+  var osc_message;
+  try {
+    osc_message = osc.fromBuffer(msg);
+  } catch(err) {
+    return console.log('Could not decode OSC message');
+  }
+  if(osc_message.address != '/socketio') {
+    return console.log('Invalid OSC address');
+  }
+  remote_osc_ip = rinfo.address;
+  io.emit('osc', {
+    x: parseInt(osc_message.args[0].value) || 0
+  });
+ 
+});
+ 
 io.on('connection', function(socket) {
+ 
   socket.on('browser', function(data) {
     if(! remote_osc_ip) {
       return;
@@ -60,9 +81,14 @@ io.on('connection', function(socket) {
     udp_server.send(osc_msg, 0, osc_msg.length, 9999, remote_osc_ip);
     console.log('Sent OSC message to %s:9999', remote_osc_ip);
   });
+
 });
- 
+
+//port bindings
 server.listen(PORT, err=>{ //app.listen(PORT) won't work
   if (err) console.log(err)
   else console.log(`=====Server listening on port ${PORT}======`)
 });
+
+udp_server.bind(9998);
+console.log(`=====UDP Server listening on port 9998=====`);
