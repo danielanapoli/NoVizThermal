@@ -27,16 +27,15 @@ app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bo
 
 
 app.post('/handler', function(req, res){
-  if(!req.body){
-    console.log("Something went wrong with form.")
-    res.sendFile(__dirname + '/error.html');
-  }
-  else{
-    console.log(req.body); //res.send(req.body.optradio);
-    let otc = new ObjectsToCSV({data, append: true});
-    let csv = otc.getCSV();
-    res.sendFile(__dirname + '/thankyou.html');
-  }
+    //append form data to text file
+    //convert to csv file here: https://json-csv.com/
+    var fs = require('fs');
+    fs.appendFile("test.txt", JSON.stringify(req.body), function(err) {
+        if (err) {
+            console.log(err);
+        }
+        res.sendFile(__dirname + '/thankyou.html') //res.send(req.body.optradio);
+    });
 })
 
 //socket comms
