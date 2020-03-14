@@ -15,19 +15,19 @@
 #include <Wire.h>
 int tmp102Address = 0x48;
 
-int led1 = 9;
-int led2 = 10;
-int led3 = 11;
-int fetPin = 13;
+int green = 9;
+int yellow = 10;
+int red = 11;
+int fetPin = 3;
 const int pinUP = 225;
 const int pinDOWN = 0;
 
 void setup() {
   Serial.begin(9600);
   Wire.begin();
-  pinMode(led1, OUTPUT);
-  pinMode(led2, OUTPUT);
-  pinMode(led3, OUTPUT);
+  pinMode(green, OUTPUT); 
+  pinMode(yellow, OUTPUT);
+  pinMode(red, OUTPUT);
   pinMode(fetPin, OUTPUT);  
 }
 
@@ -38,24 +38,24 @@ void loop() {
   Serial.print("\n");
   
   if(celsius >= 30){
-    digitalWrite(led1, LOW);
-    digitalWrite(led2, LOW);
-    digitalWrite(led3, HIGH);
-    analogWrite(fetPin, pinDOWN);// 0% heater off
+    digitalWrite(green, LOW);
+    digitalWrite(yellow, LOW);
+    digitalWrite(red, HIGH);
+    analogWrite(fetPin, pinDOWN); //heater off 
     delay(3000);
   }
-  else if (celsius > 14){
-    digitalWrite(led1, LOW);
-    digitalWrite(led2, HIGH);
-    digitalWrite(led3, LOW);
+  else if (celsius < 23.5){
+    digitalWrite(green, HIGH);
+    digitalWrite(yellow, LOW);
+    digitalWrite(red, LOW);
     analogWrite(fetPin, pinUP); //heater on at 100%
     delay(3000);
   }
   else {
-    digitalWrite(led1, HIGH);
-    digitalWrite(led2, LOW);
-    digitalWrite(led3, LOW);
-    analogWrite(fetPin, 170); //65% duty cycle on heater
+    digitalWrite(green, LOW);
+    digitalWrite(yellow, HIGH);
+    digitalWrite(red, LOW);
+    analogWrite(fetPin, 145); //heater on at 65%
     delay(1000);    
   }
   delay(1000); //repeat once per second

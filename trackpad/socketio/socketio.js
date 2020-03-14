@@ -13,7 +13,7 @@ let remote_osc_ip;
 const PORT = 8080;
 
 //serve static files
-app.use(express.static(__dirname)); //current directory is root
+app.use(express.static('./')); //current directory is root
 
 //middleware
 app.get('/', function(req, res){
@@ -38,9 +38,7 @@ app.post('/handler', function(req, res){
     });
 })
 
-//socket comms
-var io = socketio(http_server);
- 
+//socket comms 
 var udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
  
   var osc_message;
@@ -84,7 +82,7 @@ io.on('connection', function(socket) {
 });
 
 //port bindings
-server.listen(PORT, err=>{ //app.listen(PORT) won't work
+app.listen(PORT, err=>{ //app.listen(PORT) won't work
   if (err) console.log(err)
   else console.log(`=====Server listening on port ${PORT}======`)
 });
