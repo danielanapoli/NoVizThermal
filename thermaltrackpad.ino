@@ -44,7 +44,7 @@ void loop() {
     analogWrite(fetPin, pinDOWN); //heater off 
     delay(3000);
   }
-  else if (celsius < 23.5){
+  else if (celsius < 25){
     digitalWrite(green, HIGH);
     digitalWrite(yellow, LOW);
     digitalWrite(red, LOW);
