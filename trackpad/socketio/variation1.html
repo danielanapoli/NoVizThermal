@@ -6,16 +6,17 @@
   <meta charset="utf-8">
   <title>Usability Testing Administration Page</title>
 
-  <!--JS-->
+  <!--OPERATIVE JS-->
+  <!--TODO: properly abstract scripting to external .js-->
   <script src="/socket.io/socketio.js"></script>
   <script src="communication.js"></script>
   <script>
-       function linkDisable(link) {
-     // disable subsequent clicks
+    // disable subsequent clicks
+    function linkDisable(link) {
      link.onclick = function(event) {
         event.preventDefault();
      }
-   }  
+    }  
   </script>
 
   <!--BOOTSTRAP JS-->
@@ -26,7 +27,6 @@
   <!--BOOTSTRAP CSS-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-  
 
 <body>
 
