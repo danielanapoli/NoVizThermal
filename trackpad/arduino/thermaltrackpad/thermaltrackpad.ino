@@ -29,7 +29,7 @@ int red = 11;
 int fetPin = 3;
 const int pinUP = 225;
 const int pinDOWN = 0;
-const int DANGER = 30;
+const int DANGER = 24;
 
 void setup() {
   Serial.begin(9600);
@@ -52,10 +52,16 @@ void loop() {
   if (output == 1){
     analogWrite(fetPin, pinUP); //turn heater on
     digitalWrite(yellow, HIGH); //turn indicator on
+    input = 1;
+    delay(30000);
+    analogWrite(fetPin, pinDOWN); //turn heater off
   } else {
     analogWrite(fetPin, pinDOWN); //turn heater off
     digitalWrite(yellow, LOW); //turn indicator off
+    input = 2;
   }
+
+  sender.sync();
   
   //NOTE: the getTemperature is not accurate
   float celsius = getTemperature();
@@ -67,16 +73,12 @@ void loop() {
     //turn red on
     digitalWrite(green, LOW);
     digitalWrite(red, HIGH);
-    delay(3000);
   }
   else{
     //turn green on
     digitalWrite(green, HIGH);
     digitalWrite(red, LOW);
-    delay(3000);
   }
-
-  delay(1000); //repeat loop once per second
 }
 
 float getTemperature(){
