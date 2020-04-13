@@ -6,7 +6,7 @@
   <title>Usability Testing Administration Page</title>
 
   <!--JS-->
-  <script src="/socketio_2.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
    
   <!--BOOTSTRAP JS-->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -47,19 +47,19 @@
           <label class="assessment">The above website is...</label>
           <input class="form-control" type="text" name="close_site7" id="close_site7" hidden>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="assessment_site7" id="assessment_high" value="high" onclick="getElementById('close_site7').value=Date()">
+            <input class="form-check-input" type="radio" name="assessment_site7" id="assessment_high" value="high" onclick="getElementById('close_site7').value=Date();heaterOFF()">
             <label class="form-check-label" for="assessment_safe">
               High risk
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="assessment_site7" id="assessment_med" value="med" onclick="getElementById('close_site7').value=Date()">
+            <input class="form-check-input" type="radio" name="assessment_site7" id="assessment_med" value="med" onclick="getElementById('close_site7').value=Date();heaterOFF()">
             <label class="form-check-label" for="assessment_unsafe">
               Medium risk
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="assessment_site7" id="assessment_low" value="low" onclick="getElementById('close_site7').value=Date()">
+            <input class="form-check-input" type="radio" name="assessment_site7" id="assessment_low" value="low" onclick="getElementById('close_site7').value=Date();heaterOFF()">
             <label class="form-check-label" for="assessment_unsafe">
               Low risk
             </label>
@@ -134,26 +134,26 @@
           <hr> 
 
     <!--EV CERT WEBSITE 1-->
-    <a href="https://www.braintreegateway.com/login" id="evCert" target="_blank" onclick="getElementById('open_site1').value=Date();linkDisable(this)"><h3>Website 2</h3></a>
+    <a href="https://www.braintreegateway.com/login" id="evCert" target="_blank" onclick="getElementById('open_site1').value=Date();linkDisable(this);heaterOFF()"><h3>Website 2</h3></a>
     <input class="form-control" type="text" name="open_site1" id="open_site1" hidden>
     </br>
         <!--Safe/Unsafe-->
         <label class="assessment">The above website is...</label>
         <input class="form-control" type="text" name="close_site1" id="close_site1" hidden>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="assessment_site1" id="assessment_high" value="high" onclick="getElementById('close_site1').value=Date()">
+            <input class="form-check-input" type="radio" name="assessment_site1" id="assessment_high" value="high" onclick="getElementById('close_site1').value=Date();heaterOFF()">
             <label class="form-check-label" for="assessment_safe">
               High risk
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="assessment_site1" id="assessment_med" value="med" onclick="getElementById('close_site1').value=Date()">
+            <input class="form-check-input" type="radio" name="assessment_site1" id="assessment_med" value="med" onclick="getElementById('close_site1').value=Date();heaterOFF()">
             <label class="form-check-label" for="assessment_unsafe">
               Medium risk
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="assessment_site1" id="assessment_low" value="low" onclick="getElementById('close_site1').value=Date()">
+            <input class="form-check-input" type="radio" name="assessment_site1" id="assessment_low" value="low" onclick="getElementById('close_site1').value=Date();heaterOFF()">
             <label class="form-check-label" for="assessment_unsafe">
               Low risk
             </label>
@@ -228,26 +228,26 @@
         <hr>
 
       <!--EV CERT WEBSITE 3-->
-      <a href="https://vdidr.fimbank.com/vpn/index.html" id="evCert" target="_blank" onclick="getElementById('open_site1').value=Date();linkDisable(this)"><h3>Website 3</h3></a>
+      <a href="https://vdidr.fimbank.com/vpn/index.html" id="evCert" target="_blank" onclick="getElementById('open_site1').value=Date();linkDisable(this);heaterOFF()"><h3>Website 3</h3></a>
       <input class="form-control" type="text" name="open_site3" id="open_site3" hidden>
         </br>
             <!--Safe/Unsafe-->
             <label class="assessment">The above website is...</label>
             <input class="form-control" type="text" name="close_site3" id="close_site3" hidden>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_high" value="high" onclick="getElementById('close_site3').value=Date()">
+              <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_high" value="high" onclick="getElementById('close_site3').value=Date();heaterOFF()">
               <label class="form-check-label" for="assessment_safe">
                 High risk
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_med" value="med" onclick="getElementById('close_site3').value=Date()">
+              <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_med" value="med" onclick="getElementById('close_site3').value=Date();heaterOFF()">
               <label class="form-check-label" for="assessment_unsafe">
                 Medium risk
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_low" value="low" onclick="getElementById('close_site3').value=Date()">
+              <input class="form-check-input" type="radio" name="assessment_site3" id="assessment_low" value="low" onclick="getElementById('close_site3').value=Date();heaterOFF()">
               <label class="form-check-label" for="assessment_unsafe">
                 Low risk
               </label>
@@ -329,19 +329,19 @@
           <label class="assessment">The above website is...</label>
           <input class="form-control" type="text" name="close_site9" id="close_site9" hidden>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="assessment_site9" id="assessment_high" value="high" onclick="getElementById('close_site9').value=Date()">
+            <input class="form-check-input" type="radio" name="assessment_site9" id="assessment_high" value="high" onclick="getElementById('close_site9').value=Date();heaterOFF()">
             <label class="form-check-label" for="assessment_high">
               High risk
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="assessment_site9" id="assessment_med" value="med" onclick="getElementById('close_site9').value=Date()">
+            <input class="form-check-input" type="radio" name="assessment_site9" id="assessment_med" value="med" onclick="getElementById('close_site9').value=Date();heaterOFF()">
             <label class="form-check-label" for="assessment_med">
               Medium risk
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="assessment_site9" id="assessment_low" value="low" onclick="getElementById('close_site9').value=Date()">
+            <input class="form-check-input" type="radio" name="assessment_site9" id="assessment_low" value="low" onclick="getElementById('close_site9').value=Date();heaterOFF()">
             <label class="form-check-label" for="assessment_low">
               Low risk
             </label>
@@ -422,19 +422,19 @@
               <label class="assessment">The above website is...</label>
               <input class="form-control" type="text" name="close_site8" id="close_site8" hidden>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="assessment_site8" id="assessment_high" value="high" onclick="getElementById('close_site8').value=Date()">
+                <input class="form-check-input" type="radio" name="assessment_site8" id="assessment_high" value="high" onclick="getElementById('close_site8').value=Date();heaterOFF()">
                 <label class="form-check-label" for="assessment_safe">
                   High risk
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="assessment_site8" id="assessment_med" value="med" onclick="getElementById('close_site8').value=Date()">
+                <input class="form-check-input" type="radio" name="assessment_site8" id="assessment_med" value="med" onclick="getElementById('close_site8').value=Date();heaterOFF()">
                 <label class="form-check-label" for="assessment_unsafe">
                   Medium risk
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="assessment_site8" id="assessment_low" value="low" onclick="getElementById('close_site8').value=Date()">
+                <input class="form-check-input" type="radio" name="assessment_site8" id="assessment_low" value="low" onclick="getElementById('close_site8').value=Date();heaterOFF()">
                 <label class="form-check-label" for="assessment_unsafe">
                   Low risk
                 </label>
@@ -509,26 +509,26 @@
               <hr>
 
       <!--EV CERT WEBSITE 2-->
-      <a href="https://www.buyrailings.com/" id="evCert" target="_blank" onclick="getElementById('open_site1').value=Date();linkDisable(this)"><h3>Website 6</h3></a>
+      <a href="https://www.buyrailings.com/" id="evCert" target="_blank" onclick="getElementById('open_site1').value=Date();linkDisable(this);heaterOFF()"><h3>Website 6</h3></a>
       <input class="form-control" type="text" name="open_site2" id="open_site2" hidden>
       </br>
         <!--Safe/Unsafe-->
         <label class="assessment">The above website is...</label>
         <input class="form-control" type="text" name="close_site2" id="close_site2" hidden>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="assessment_site2" id="assessment_high" value="high" onclick="getElementById('close_site2').value=Date()">
+          <input class="form-check-input" type="radio" name="assessment_site2" id="assessment_high" value="high" onclick="getElementById('close_site2').value=Date();heaterOFF()">
           <label class="form-check-label" for="assessment_safe">
             High risk
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="assessment_site2" id="assessment_med" value="med" onclick="getElementById('close_site2').value=Date()">
+          <input class="form-check-input" type="radio" name="assessment_site2" id="assessment_med" value="med" onclick="getElementById('close_site2').value=Date();heaterOFF()">
           <label class="form-check-label" for="assessment_unsafe">
             Medium risk
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="assessment_site2" id="assessment_low" value="low" onclick="getElementById('close_site2').value=Date()">
+          <input class="form-check-input" type="radio" name="assessment_site2" id="assessment_low" value="low" onclick="getElementById('close_site2').value=Date();heaterOFF()">
           <label class="form-check-label" for="assessment_unsafe">
             Low risk
           </label>
@@ -614,6 +614,8 @@
     socket.on('osc', function (data) {
       if (data.x == 1) {
         console.log("Heater ON")
+      } else {
+        console.log("Heater OFF")
       }
     });
 
@@ -621,6 +623,13 @@
       console.log("heaterON() called")
       socket.emit('browser', {
         x: 1 || 0
+      });
+    }
+
+    function heaterOFF() {
+      console.log("heaterOFF() called")
+      socket.emit('browser', {
+        x: 2 || 0
       });
     }
 

@@ -48,19 +48,19 @@ void setup() {
 
 void loop() {
   receiver.sync();  //get output from processing
-
   if (output == 1){
     analogWrite(fetPin, pinUP); //turn heater on
+    Serial.print("pinUP");
     digitalWrite(yellow, HIGH); //turn indicator on
     input = 1;
-    delay(30000);
+  } else if (output == 2) {
     analogWrite(fetPin, pinDOWN); //turn heater off
-  } else {
-    analogWrite(fetPin, pinDOWN); //turn heater off
+    Serial.print("pinDOWN");
     digitalWrite(yellow, LOW); //turn indicator off
     input = 2;
+  } else {
+    analogWrite(fetPin, pinDOWN); //keep heater off by default
   }
-
   sender.sync();
   
   //NOTE: the getTemperature is not accurate

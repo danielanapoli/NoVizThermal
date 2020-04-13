@@ -23,7 +23,7 @@ public int input = 2;
 void setup() 
 {
   // Starting the serial communication, the baudrate and the com port should be same as on the Arduino side.
-  Serial serial = new Serial(this, "COM6", 9600);
+  Serial serial = new Serial(this, "COM3", 9600);
 
   //  Ininialize the ValueReceiver and ValueSender with this (to hook it to your sketch)
   //  and the serial interface you want to use.
