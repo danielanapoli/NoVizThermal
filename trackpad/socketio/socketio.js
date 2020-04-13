@@ -1,21 +1,20 @@
-const express = require('express')
-const app = express();
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
-const path = require('path');
-const ObjectsToCSV = require('objects-to-csv'); //export form data to csv
+const http      = require('http');
+const express   = require('express');
+const app       = express();
+const server    = http.createServer(app);
+const io        = require('socket.io').listen(server);
 
-//arduino extras
-//https://maker.pro/arduino/projects/learn-how-to-enable-communication-between-an-arduino-and-web-browser
-const osc = require('osc-min');
-const dgram = require('dgram');
+const osc       = require('osc-min');
+const dgram     = require('dgram');
+
 let remote_osc_ip;
-const PORT = 8080;
+
+const PORT      = 8080;
 
 //serve static files
 app.use(express.static('./')); //current directory is root
 
-//middleware
+//middleware to rerout no GET query to serve index.html
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
@@ -24,7 +23,6 @@ app.get('/', function(req, res){
 const bodyParser = require('body-parser'); 
 app.use(bodyParser.json()); // to support JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies
-
 
 app.post('/handler', function(req, res){
     //append form data to text file
@@ -38,7 +36,7 @@ app.post('/handler', function(req, res){
     });
 })
 
-//socket comms 
+//socket comms
 var udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
  
   var osc_message;
@@ -50,13 +48,16 @@ var udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
   if(osc_message.address != '/socketio') {
     return console.log('Invalid OSC address');
   }
+  
   remote_osc_ip = rinfo.address;
+
   io.emit('osc', {
     x: parseInt(osc_message.args[0].value) || 0
   });
  
 });
- 
+
+// arduino comms through processing
 io.on('connection', function(socket) {
  
   socket.on('browser', function(data) {
@@ -82,9 +83,9 @@ io.on('connection', function(socket) {
 });
 
 //port bindings
-app.listen(PORT, err=>{ //app.listen(PORT) won't work
+server.listen(PORT, err=>{ 
   if (err) console.log(err)
-  else console.log(`=====Server listening on port ${PORT}======`)
+  else console.log(`=====Express Server listening on port ${PORT}======`)
 });
 
 udp_server.bind(9998);
