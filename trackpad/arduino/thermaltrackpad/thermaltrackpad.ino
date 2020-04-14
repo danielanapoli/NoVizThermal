@@ -29,7 +29,7 @@ int red = 11;
 int fetPin = 3;
 const int pinUP = 225;
 const int pinDOWN = 0;
-const int DANGER = 24;
+const int DANGER = 25;
 
 void setup() {
   Serial.begin(9600);
@@ -70,14 +70,16 @@ void loop() {
   Serial.print("\n");
 
   if(celsius >= DANGER){
-    //turn red on
+    //turn redLED on to signify dangerous temperature 
     digitalWrite(green, LOW);
     digitalWrite(red, HIGH);
+    //analogWrite(fetPin, pinDOWN);
   }
   else{
-    //turn green on
+    //turn greenLED on to signify OK temperature 
     digitalWrite(green, HIGH);
     digitalWrite(red, LOW);
+    //analogWrite(fetPin, pinUP);
   }
 }
 
