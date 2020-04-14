@@ -7,6 +7,7 @@
 
   <!--JS-->
   <script src="/socket.io/socket.io.js"></script>
+  <script src="./communication.js"></script>
    
   <!--BOOTSTRAP JS-->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -607,40 +608,6 @@
 
     </form>
   </div>
-
- <script>
-    var socket = io.connect();
-
-    socket.on('osc', function (data) {
-      if (data.x == 1) {
-        console.log("Heater ON")
-      } else {
-        console.log("Heater OFF")
-      }
-    });
-
-    function heaterON() {
-      console.log("heaterON() called")
-      socket.emit('browser', {
-        x: 1 || 0
-      });
-    }
-
-    function heaterOFF() {
-      console.log("heaterOFF() called")
-      socket.emit('browser', {
-        x: 2 || 0
-      });
-    }
-
-    // disable subsequent clicks
-    function linkDisable(link) {
-     link.onclick = function(event) {
-        event.preventDefault();
-     }
-    }  
-
-  </script>
 
 </body>
 </html>
