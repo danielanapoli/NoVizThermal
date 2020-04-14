@@ -10,6 +10,7 @@
     "author": "Daniela Napoli",
     "license": "ISC",
     "dependencies": {
+        "minimist": ">=0.2.1",
         "socket.io": "^2.3.0",
         "osc-min": "^1.1.2",
         "dgram": "^1.0.1",
