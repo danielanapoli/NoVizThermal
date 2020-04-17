@@ -28,7 +28,7 @@ app.post('/handler', function(req, res){
     //append form data to text file
     //convert to csv file here: https://json-csv.com/
     var fs = require('fs');
-    fs.appendFile("test.txt", JSON.stringify(req.body), function(err) {
+    fs.appendFile("assessmentResults.txt", JSON.stringify(req.body), function(err) {
         if (err) {
             console.log(err);
         }
