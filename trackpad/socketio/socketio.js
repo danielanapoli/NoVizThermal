@@ -4,9 +4,12 @@ const app       = express();
 const server    = http.createServer(app);
 const io        = require('socket.io').listen(server);
 const fs        = require('fs');
+const converter = require('json-2-csv');    // This is what allows the conversion of JSON to CSV
 
 const osc       = require('osc-min');
 const dgram     = require('dgram');
+
+const Response  = require("./Response.js"); // This is the class to store a response about a single website
 
 let remote_osc_ip;
 
@@ -14,9 +17,10 @@ const PORT      = 8080;
 
 let variations = [];  // Store variations
 
-// ---------------- IDEAS ----------------- 
-// Make the a single variation file and request a certain variation through an :id
-// Instead of having a thankyou.html and a error.html have a message.pug that displays things based on boolean
+// ---------------- TODO? ----------------- 
+// Take out id="certificate" from the variations.pug
+
+
 
 //serve static files
 app.use(express.static('./')); //current directory is root
@@ -45,24 +49,68 @@ app.get('/', function(req, res) {
 // Serve variations
 app.get('/variation/:id', function(req, res) {
 
+  // Check that the variation requested exists
   if (parseInt(req.params.id) > variations.length || parseInt(req.params.id) < 1){
     res.status(404).send("Cannot GET " + req.url + "--> variation does not exist");
     return;
   }
 
   // The given id is reduced by 1 because variations start at 1 and array indexes at 0
-  res.render("variation", {variation: variations[parseInt(req.params.id) - 1]});
+  res.render("variation", {id: parseInt(req.params.id), variation: variations[parseInt(req.params.id) - 1]});
 });
 
+
+/* REMEMBER: If you want to add a new website to the survey, go through the next steps:
+ *  1. Go to results.json
+ *  2. Create a new key/value pair where key is the website URL and the value is an empy array
+ */
 app.post('/handler', function(req, res){
-  //append form data to text file
-  //convert to csv file here: https://json-csv.com/
-  fs.appendFile("assessmentResults.txt", JSON.stringify(req.body), function(err) {
-    if (err) {
-      console.log(err);
-    }
+  let participantID = req.body.participantID;
+  let variation = parseInt(req.body.variation);
+
+  fs.readFile('results.json', 'utf8', (err, data) => {
+    if (err){
+
+      res.render('message', {error: true});
+
+    } else {
+
+      let currentData = JSON.parse(data); // Get the data into JSON format
+
+      // Write the new reponses 
+      Object.keys(variations[variation - 1]).forEach( (value) => {
+        let response = new Response(participantID, variation, req.body['open_site' + value], req.body['close_site' + value], req.body['assessment_site' + value], req.body['confidence_site' + value], req.body['ease_site' + value]);
+        currentData[variations[variation - 1][value][0]].push(response.toObject());
+      });
+
+      currentData = JSON.stringify(currentData);
+
+      // Overwrite the JSON file
+      fs.writeFile('results.json', currentData, 'utf8', (err) => { // write it back
+        // TODO: When the CSV part is working, rememeber that res.render() can't happen twice (causes: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client)
+        if (err) {
+          res.render('message', {error: true});
+        } else {
+          res.render('message', {error: false});
+        }
+      }); 
+
+      // THIS SHOULD BE ABLE TO CONVERT JSON TO CSV HOWEVER IT IS NOT FINISHED 
+      // let dataToCSV = JSON.parse(currentData)[variations[variation - 1]["1"][0]];
+      // // dataToCSV.push(JSON.parse(currentData)[variations[variation - 1]["1"][0]]);
     
-    res.render('thankyou', {}) //res.send(req.body.optradio);
+      // Remember that json2csv takes an array of JS objects
+      // converter.json2csv(dataToCSV, (err, csv) => {
+      //   // if (err) throw err;
+      //   fs.writeFile('results.csv', csv, 'utf8', (err) => { // write it back 
+      //     if (err) {
+      //       res.render('message', {error: true});
+      //     } else {
+      //       res.render('message', {error: false}); //res.send(req.body.optradio);
+      //     }
+      //   });
+      // });
+    }
   });
 })
 

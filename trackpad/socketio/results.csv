@@ -1,0 +1,8 @@
+participantID,variation,timeOpened,timeClosed,risk,confidence,ease
+Hey,1,Tue May 12 2020 19:33:59 GMT-0400 (Eastern Daylight Time),Tue May 12 2020 19:34:03 GMT-0400 (Eastern Daylight Time),high,0,0
+Hola,1,Tue May 12 2020 19:37:43 GMT-0400 (Eastern Daylight Time),Tue May 12 2020 19:37:45 GMT-0400 (Eastern Daylight Time),high,1,0
+Madrid,1,Tue May 12 2020 19:39:44 GMT-0400 (Eastern Daylight Time),Tue May 12 2020 19:39:47 GMT-0400 (Eastern Daylight Time),high,3,3
+Ottawa,1,Tue May 12 2020 19:42:39 GMT-0400 (Eastern Daylight Time),Tue May 12 2020 19:42:42 GMT-0400 (Eastern Daylight Time),high,0,2
+Bogota,1,Tue May 12 2020 19:44:06 GMT-0400 (Eastern Daylight Time),Tue May 12 2020 19:44:09 GMT-0400 (Eastern Daylight Time),high,2,4
+Toronto,1,Tue May 12 2020 19:46:09 GMT-0400 (Eastern Daylight Time),Tue May 12 2020 19:46:12 GMT-0400 (Eastern Daylight Time),high,0,2
+London,1,Tue May 12 2020 19:52:34 GMT-0400 (Eastern Daylight Time),Tue May 12 2020 19:52:36 GMT-0400 (Eastern Daylight Time),low,1,null

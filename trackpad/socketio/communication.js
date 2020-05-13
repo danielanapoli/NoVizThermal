@@ -24,7 +24,27 @@ function heaterOFF() {
 
 // disable subsequent clicks
 function linkDisable(link) {
- link.onclick = function(event) {
-    event.preventDefault();
- }
-}  
+  link.onclick = function(event) {
+     event.preventDefault();
+  }
+ }  
+
+// This function is called when participant clicks on a URL
+function openSiteHandler(link, certificate, id) {
+  document.getElementById("open_site" + id).value = Date();
+
+  linkDisable(link);
+
+  if (certificate === "evCert") {
+    heaterOFF();
+  } else if (certificate === "http") {
+    heaterON();
+  }
+}
+
+// This function takes the time when the participant is back from the test website  
+function closeSiteHandler(id) {
+  document.getElementById("close_site" + id).value = Date();
+
+  heaterOFF();
+}
