@@ -1,1 +1,392 @@
-{"https://www.braintreegateway.com/login":[{"participantID":"Hey","variation":1,"timeOpened":"Tue May 12 2020 19:33:59 GMT-0400 (Eastern Daylight Time)","timeClosed":"Tue May 12 2020 19:34:03 GMT-0400 (Eastern Daylight Time)","risk":"high","confidence":0,"ease":0},{"participantID":"Hola","variation":1,"timeOpened":"Tue May 12 2020 19:37:43 GMT-0400 (Eastern Daylight Time)","timeClosed":"Tue May 12 2020 19:37:45 GMT-0400 (Eastern Daylight Time)","risk":"high","confidence":1,"ease":0},{"participantID":"Madrid","variation":1,"timeOpened":"Tue May 12 2020 19:39:44 GMT-0400 (Eastern Daylight Time)","timeClosed":"Tue May 12 2020 19:39:47 GMT-0400 (Eastern Daylight Time)","risk":"high","confidence":3,"ease":3},{"participantID":"Ottawa","variation":1,"timeOpened":"Tue May 12 2020 19:42:39 GMT-0400 (Eastern Daylight Time)","timeClosed":"Tue May 12 2020 19:42:42 GMT-0400 (Eastern Daylight Time)","risk":"high","confidence":0,"ease":2},{"participantID":"Bogota","variation":1,"timeOpened":"Tue May 12 2020 19:44:06 GMT-0400 (Eastern Daylight Time)","timeClosed":"Tue May 12 2020 19:44:09 GMT-0400 (Eastern Daylight Time)","risk":"high","confidence":2,"ease":4},{"participantID":"Toronto","variation":1,"timeOpened":"Tue May 12 2020 19:46:09 GMT-0400 (Eastern Daylight Time)","timeClosed":"Tue May 12 2020 19:46:12 GMT-0400 (Eastern Daylight Time)","risk":"high","confidence":0,"ease":2},{"participantID":"London","variation":1,"timeOpened":"Tue May 12 2020 19:52:34 GMT-0400 (Eastern Daylight Time)","timeClosed":"Tue May 12 2020 19:52:36 GMT-0400 (Eastern Daylight Time)","risk":"low","confidence":1,"ease":null}],"https://vdidr.fimbank.com/vpn/index.html":[{"participantID":"Hey","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Hola","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Madrid","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Ottawa","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Bogota","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Toronto","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"London","variation":1,"timeOpened":"","timeClosed":"Tue May 12 2020 19:52:42 GMT-0400 (Eastern Daylight Time)","risk":"low","confidence":null,"ease":null}],"http://southvalleyroofing.com/":[{"participantID":"Hey","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Hola","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Madrid","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Ottawa","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Bogota","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Toronto","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"London","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null}],"http://www.topclassair.com/":[{"participantID":"Hey","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Hola","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Madrid","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Ottawa","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Bogota","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Toronto","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"London","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null}],"http://booking.aviwest.com/login":[{"participantID":"Hey","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Hola","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Madrid","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Ottawa","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Bogota","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Toronto","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"London","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null}],"https://www.buyrailings.com/":[{"participantID":"Hey","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Hola","variation":1,"timeOpened":"Tue May 12 2020 19:37:51 GMT-0400 (Eastern Daylight Time)","timeClosed":"Tue May 12 2020 19:37:53 GMT-0400 (Eastern Daylight Time)","risk":"high","confidence":0,"ease":1},{"participantID":"Madrid","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Ottawa","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Bogota","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"Toronto","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null},{"participantID":"London","variation":1,"timeOpened":"","timeClosed":"","risk":null,"confidence":null,"ease":null}]}
+{
+    "https://www.braintreegateway.com/login": [
+        {
+            "participantID": "Hey",
+            "variation": 1,
+            "timeOpened": "Tue May 12 2020 19:33:59 GMT-0400 (Eastern Daylight Time)",
+            "timeClosed": "Tue May 12 2020 19:34:03 GMT-0400 (Eastern Daylight Time)",
+            "risk": "high",
+            "confidence": 0,
+            "ease": 0
+        },
+        {
+            "participantID": "Hola",
+            "variation": 1,
+            "timeOpened": "Tue May 12 2020 19:37:43 GMT-0400 (Eastern Daylight Time)",
+            "timeClosed": "Tue May 12 2020 19:37:45 GMT-0400 (Eastern Daylight Time)",
+            "risk": "high",
+            "confidence": 1,
+            "ease": 0
+        },
+        {
+            "participantID": "Madrid",
+            "variation": 1,
+            "timeOpened": "Tue May 12 2020 19:39:44 GMT-0400 (Eastern Daylight Time)",
+            "timeClosed": "Tue May 12 2020 19:39:47 GMT-0400 (Eastern Daylight Time)",
+            "risk": "high",
+            "confidence": 3,
+            "ease": 3
+        },
+        {
+            "participantID": "Ottawa",
+            "variation": 1,
+            "timeOpened": "Tue May 12 2020 19:42:39 GMT-0400 (Eastern Daylight Time)",
+            "timeClosed": "Tue May 12 2020 19:42:42 GMT-0400 (Eastern Daylight Time)",
+            "risk": "high",
+            "confidence": 0,
+            "ease": 2
+        },
+        {
+            "participantID": "Bogota",
+            "variation": 1,
+            "timeOpened": "Tue May 12 2020 19:44:06 GMT-0400 (Eastern Daylight Time)",
+            "timeClosed": "Tue May 12 2020 19:44:09 GMT-0400 (Eastern Daylight Time)",
+            "risk": "high",
+            "confidence": 2,
+            "ease": 4
+        },
+        {
+            "participantID": "Toronto",
+            "variation": 1,
+            "timeOpened": "Tue May 12 2020 19:46:09 GMT-0400 (Eastern Daylight Time)",
+            "timeClosed": "Tue May 12 2020 19:46:12 GMT-0400 (Eastern Daylight Time)",
+            "risk": "high",
+            "confidence": 0,
+            "ease": 2
+        },
+        {
+            "participantID": "London",
+            "variation": 1,
+            "timeOpened": "Tue May 12 2020 19:52:34 GMT-0400 (Eastern Daylight Time)",
+            "timeClosed": "Tue May 12 2020 19:52:36 GMT-0400 (Eastern Daylight Time)",
+            "risk": "low",
+            "confidence": 1,
+            "ease": null
+        }
+    ],
+    "https://vdidr.fimbank.com/vpn/index.html": [
+        {
+            "participantID": "Hey",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Hola",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Madrid",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Ottawa",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Bogota",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Toronto",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "London",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "Tue May 12 2020 19:52:42 GMT-0400 (Eastern Daylight Time)",
+            "risk": "low",
+            "confidence": null,
+            "ease": null
+        }
+    ],
+    "http://southvalleyroofing.com/": [
+        {
+            "participantID": "Hey",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Hola",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Madrid",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Ottawa",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Bogota",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Toronto",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "London",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        }
+    ],
+    "http://www.topclassair.com/": [
+        {
+            "participantID": "Hey",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Hola",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Madrid",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Ottawa",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Bogota",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Toronto",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "London",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        }
+    ],
+    "http://booking.aviwest.com/login": [
+        {
+            "participantID": "Hey",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Hola",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Madrid",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Ottawa",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Bogota",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Toronto",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "London",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        }
+    ],
+    "https://www.buyrailings.com/": [
+        {
+            "participantID": "Hey",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Hola",
+            "variation": 1,
+            "timeOpened": "Tue May 12 2020 19:37:51 GMT-0400 (Eastern Daylight Time)",
+            "timeClosed": "Tue May 12 2020 19:37:53 GMT-0400 (Eastern Daylight Time)",
+            "risk": "high",
+            "confidence": 0,
+            "ease": 1
+        },
+        {
+            "participantID": "Madrid",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Ottawa",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Bogota",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "Toronto",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        },
+        {
+            "participantID": "London",
+            "variation": 1,
+            "timeOpened": "",
+            "timeClosed": "",
+            "risk": null,
+            "confidence": null,
+            "ease": null
+        }
+    ]
+}

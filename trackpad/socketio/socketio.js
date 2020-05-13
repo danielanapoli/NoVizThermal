@@ -19,6 +19,7 @@ let variations = [];  // Store variations
 
 // ---------------- TODO? ----------------- 
 // Take out id="certificate" from the variations.pug
+// Add order data parameter to the responses
 
 
 
@@ -68,7 +69,7 @@ app.post('/handler', function(req, res){
   let participantID = req.body.participantID;
   let variation = parseInt(req.body.variation);
 
-  fs.readFile('results.json', 'utf8', (err, data) => {
+  fs.readFile('results2.json', 'utf8', (err, data) => {
     if (err){
 
       res.render('message', {error: true});
@@ -79,40 +80,43 @@ app.post('/handler', function(req, res){
 
       // Write the new reponses 
       Object.keys(variations[variation - 1]).forEach( (value) => {
-        let response = new Response(participantID, variation, req.body['open_site' + value], req.body['close_site' + value], req.body['assessment_site' + value], req.body['confidence_site' + value], req.body['ease_site' + value]);
-        currentData[variations[variation - 1][value][0]].push(response.toObject());
+        let response = new Response(variations[variation - 1][value][0], 
+                                    participantID, variation, req.body["order" + value], 
+                                    req.body['open_site' + value], 
+                                    req.body['close_site' + value], 
+                                    req.body['assessment_site' + value], 
+                                    req.body['confidence_site' + value], 
+                                    req.body['ease_site' + value]);
+        currentData["responses"].push(response.toObject());
+      });
+
+      // Remember that json2csv takes an array of JS objects
+      converter.json2csv(currentData["responses"], (err, csv) => {
+        // if (err) throw err;
+        fs.writeFile('results.csv', csv, 'utf8', (err) => { // write it back 
+          if (err) {
+            res.render('message', {error: true});
+          }
+          // TODO: When the CSV part is working, rememeber that res.render() can't happen twice (causes: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client)
+          // } else {
+          //   res.render('message', {error: false}); //res.send(req.body.optradio);
+          // }
+        });
       });
 
       currentData = JSON.stringify(currentData);
 
       // Overwrite the JSON file
-      fs.writeFile('results.json', currentData, 'utf8', (err) => { // write it back
-        // TODO: When the CSV part is working, rememeber that res.render() can't happen twice (causes: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client)
+      fs.writeFile('results2.json', currentData, 'utf8', (err) => { // write it back
         if (err) {
           res.render('message', {error: true});
         } else {
           res.render('message', {error: false});
         }
       }); 
-
-      // THIS SHOULD BE ABLE TO CONVERT JSON TO CSV HOWEVER IT IS NOT FINISHED 
-      // let dataToCSV = JSON.parse(currentData)[variations[variation - 1]["1"][0]];
-      // // dataToCSV.push(JSON.parse(currentData)[variations[variation - 1]["1"][0]]);
-    
-      // Remember that json2csv takes an array of JS objects
-      // converter.json2csv(dataToCSV, (err, csv) => {
-      //   // if (err) throw err;
-      //   fs.writeFile('results.csv', csv, 'utf8', (err) => { // write it back 
-      //     if (err) {
-      //       res.render('message', {error: true});
-      //     } else {
-      //       res.render('message', {error: false}); //res.send(req.body.optradio);
-      //     }
-      //   });
-      // });
     }
   });
-})
+});
 
 
 

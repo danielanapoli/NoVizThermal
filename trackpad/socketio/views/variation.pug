@@ -32,6 +32,7 @@ html(lang="en")
                     //- WEBSITE
                     //- a(href="" + variation[key][0] id="" + variation[key][1] target="_blank" onclick="getElementById('open_site1').value=Date();linkDisable(this);heaterON()"): h3 Website #{key}
                     a(href="" + variation[key][0] id="" + variation[key][1] target="_blank" onclick="openSiteHandler(this, " + variation[key][1] + ", " + key + ")"): h3 Website #{key}
+                    input(class="form-control" type="text" name="order" + key id="order" + key value = "" + key hidden)
                     input(class="form-control" type="text" name="open_site" + key id="open_site" + key hidden)
                     br
 
