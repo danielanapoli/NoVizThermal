@@ -19,7 +19,6 @@ let variations = [];  // Store variations
 
 // ---------------- TODO? ----------------- 
 // Take out id="certificate" from the variations.pug
-// Add order data parameter to the responses
 
 
 
@@ -69,7 +68,7 @@ app.post('/handler', function(req, res){
   let participantID = req.body.participantID;
   let variation = parseInt(req.body.variation);
 
-  fs.readFile('results2.json', 'utf8', (err, data) => {
+  fs.readFile('results/results2.json', 'utf8', (err, data) => {
     if (err){
 
       res.render('message', {error: true});
@@ -93,7 +92,7 @@ app.post('/handler', function(req, res){
       // Remember that json2csv takes an array of JS objects
       converter.json2csv(currentData["responses"], (err, csv) => {
         // if (err) throw err;
-        fs.writeFile('results.csv', csv, 'utf8', (err) => { // write it back 
+        fs.writeFile('results/results.csv', csv, 'utf8', (err) => { // write it back 
           if (err) {
             res.render('message', {error: true});
           }
@@ -107,7 +106,7 @@ app.post('/handler', function(req, res){
       currentData = JSON.stringify(currentData);
 
       // Overwrite the JSON file
-      fs.writeFile('results2.json', currentData, 'utf8', (err) => { // write it back
+      fs.writeFile('results/results2.json', currentData, 'utf8', (err) => { // write it back
         if (err) {
           res.render('message', {error: true});
         } else {
