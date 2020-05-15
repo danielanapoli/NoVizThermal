@@ -143,3 +143,33 @@ http://booking.aviwest.com/login,Seoul,2,3,,Wed May 13 2020 20:22:33 GMT-0400 (E
 http://southvalleyroofing.com/,Seoul,2,4,,Wed May 13 2020 20:22:37 GMT-0400 (Eastern Daylight Time),low,2,1
 https://www.braintreegateway.com/login,Seoul,2,5,,Wed May 13 2020 20:22:41 GMT-0400 (Eastern Daylight Time),low,2,3
 https://www.buyrailings.com/,Seoul,2,6,,Wed May 13 2020 20:22:44 GMT-0400 (Eastern Daylight Time),low,2,0
+https://www.braintreegateway.com/login,Lisbon,1,1,,,high,0,0
+https://vdidr.fimbank.com/vpn/index.html,Lisbon,1,2,,,low,3,2
+http://southvalleyroofing.com/,Lisbon,1,3,,,low,2,2
+http://www.topclassair.com/,Lisbon,1,4,,,low,4,2
+http://booking.aviwest.com/login,Lisbon,1,5,,,high,2,4
+https://www.buyrailings.com/,Lisbon,1,6,,,low,1,4
+https://www.braintreegateway.com/login,Porto,1,1,13:25:46,13:25:44,high,1,2
+https://vdidr.fimbank.com/vpn/index.html,Porto,1,2,13:25:51,13:25:55,low,1,1
+http://southvalleyroofing.com/,Porto,1,3,13:25:58,13:25:57,high,2,3
+http://www.topclassair.com/,Porto,1,4,13:26:3,13:26:6,low,0,4
+http://booking.aviwest.com/login,Porto,1,5,13:26:9,13:26:12,low,1,2
+https://www.buyrailings.com/,Porto,1,6,13:26:15,13:26:18,high,0,4
+https://www.braintreegateway.com/login,Sydney,1,1,11:22:53,11:22:56,high,0,1
+https://vdidr.fimbank.com/vpn/index.html,Sydney,1,2,11:22:59,11:23:2,high,1,1
+http://southvalleyroofing.com/,Sydney,1,3,11:23:5,11:23:8,high,2,3
+http://www.topclassair.com/,Sydney,1,4,11:23:11,11:23:14,high,0,1
+http://booking.aviwest.com/login,Sydney,1,5,11:23:17,11:23:21,low,2,3
+https://www.buyrailings.com/,Sydney,1,6,11:23:26,11:23:29,low,2,0
+https://www.braintreegateway.com/login,Barcelona,1,1,11:24:50,11:24:53,low,2,2
+https://vdidr.fimbank.com/vpn/index.html,Barcelona,1,2,11:24:58,11:25:0,low,3,1
+http://southvalleyroofing.com/,Barcelona,1,3,11:25:3,11:25:5,low,4,2
+http://www.topclassair.com/,Barcelona,1,4,11:25:8,11:25:11,high,2,4
+http://booking.aviwest.com/login,Barcelona,1,5,11:25:15,11:25:17,high,2,1
+https://www.buyrailings.com/,Barcelona,1,6,11:25:22,11:25:24,high,2,0
+http://www.topclassair.com/,Montreal ,2,1,11:34:27,11:37:20,high,0,1
+https://vdidr.fimbank.com/vpn/index.html,Montreal ,2,2,11:37:24,11:37:27,low,0,3
+http://booking.aviwest.com/login,Montreal ,2,3,11:37:30,11:37:32,low,2,0
+http://southvalleyroofing.com/,Montreal ,2,4,11:37:36,11:37:39,low,0,1
+https://www.braintreegateway.com/login,Montreal ,2,5,11:37:42,11:37:44,low,2,2
+https://www.buyrailings.com/,Montreal ,2,6,11:37:47,11:37:51,high,1,2
