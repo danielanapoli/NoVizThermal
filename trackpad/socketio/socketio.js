@@ -11,6 +11,11 @@ const dgram     = require('dgram');
 
 const Response  = require("./Response.js"); // This is the class to store a response about a single website
 
+// MongoDB conection stuff
+const MongoClient = require('mongodb').MongoClient;
+const config      = require('./resources/config.json');
+
+
 let remote_osc_ip;
 
 const PORT      = 8080;
@@ -74,9 +79,9 @@ app.post('/handler', function(req, res){
       res.render('message', {error: true});
 
     } else {
+      //let currentData = JSON.parse(data); // Get the data into JSON format
 
-      let currentData = JSON.parse(data); // Get the data into JSON format
-
+      let responses = [];
       // Write the new reponses 
       Object.keys(variations[variation - 1]).forEach( (value) => {
         let response = new Response(variations[variation - 1][value][0], 
@@ -86,36 +91,59 @@ app.post('/handler', function(req, res){
                                     req.body['assessment_site' + value], 
                                     req.body['confidence_site' + value], 
                                     req.body['ease_site' + value]);
-        currentData["responses"].push(response.toObject());
+        // currentData["responses"].push(response.toObject());
+        responses.push(response.toObject());
       });
 
-      // Remember that json2csv takes an array of JS objects
-      converter.json2csv(currentData["responses"], (err, csv) => {
-        // if (err) throw err;
-        fs.writeFile('results/results.csv', csv, 'utf8', (err) => { // write it back 
-          if (err) {
-            res.render('message', {error: true});
-          }
-          // TODO: When the CSV part is working, rememeber that res.render() can't happen twice (causes: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client)
-          // } else {
-          //   res.render('message', {error: false}); //res.send(req.body.optradio);
-          // }
-        });
-      });
+      sendToDatabase(responses);
 
-      currentData = JSON.stringify(currentData);
+      res.render('message', {error: false});
 
-      // Overwrite the JSON file
-      fs.writeFile('results/results2.json', currentData, 'utf8', (err) => { // write it back
-        if (err) {
-          res.render('message', {error: true});
-        } else {
-          res.render('message', {error: false});
-        }
-      }); 
+      
+
+      // // Remember that json2csv takes an array of JS objects
+      // converter.json2csv(currentData["responses"], (err, csv) => {
+      //   // if (err) throw err;
+      //   fs.writeFile('results/results.csv', csv, 'utf8', (err) => { // write it back 
+      //     if (err) {
+      //       res.render('message', {error: true});
+      //     }
+      //     // TODO: When the CSV part is working, rememeber that res.render() can't happen twice (causes: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client)
+      //     // } else {
+      //     //   res.render('message', {error: false}); //res.send(req.body.optradio);
+      //     // }
+      //   });
+      // });
+
+      // currentData = JSON.stringify(currentData);
+
+      // // Overwrite the JSON file
+      // fs.writeFile('results/results2.json', currentData, 'utf8', (err) => { // write it back
+      //   if (err) {
+      //     res.render('message', {error: true});
+      //   } else {
+      //     res.render('message', {error: false});
+      //   }
+      // }); 
     }
   });
 });
+
+/* This function send a group of responses to the mongoDB cluster
+ * @params array of reponse objects
+ */
+const sendToDatabase = async(information) => {
+  // connect to the cluster 
+  const client = await MongoClient.connect(config.uri, { useUnifiedTopology: true });
+
+  // Get the respective collection
+  const collection = client.db("Test").collection("TestData");
+  
+  // Insert the array of new responses
+  await collection.insertMany(information);
+
+  client.close();
+};
 
 
 
