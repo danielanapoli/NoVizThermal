@@ -3,6 +3,7 @@ const express   = require('express');
 const app       = express();
 const server    = http.createServer(app);
 const io        = require('socket.io').listen(server);
+const fs        = require('fs');
 
 const osc       = require('osc-min');
 const dgram     = require('dgram');
@@ -11,12 +12,30 @@ let remote_osc_ip;
 
 const PORT      = 8080;
 
-//serve static files
+// ---------------- TODO? ----------------- 
+// Take out id="certificate" from the variations.pug
+
+// Pug
+app.set('view engine', 'pug');
+app.set('views', "./pug/views");
+
+// Serve static files
 app.use(express.static('./')); //current directory is root
 
-//middleware to rerout no GET query to serve index.html
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+// const shuffler = require("./resources/fisher-yates");
+
+// app.locals.variation = shuffler(require("./variations/variaton.json"));
+
+// Read the variations folder to get the different website orderings
+fs.readdir("./variations/", (err, files) => {
+  app.locals.variations = [];
+  // Here, each json object is transformed into a js object and pushed to my restaurantData array
+  files.forEach(filename => {
+      const jsonToJs = require("./variations/" + filename);
+      app.locals.variations.push(jsonToJs);
+  });
+
+  app.locals.variations = shuffler(app.locals.variations);
 });
 
 //handle form data
@@ -24,17 +43,9 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json()); // to support JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies
 
-app.post('/handler', function(req, res){
-    //append form data to text file
-    //convert to csv file here: https://json-csv.com/
-    var fs = require('fs');
-    fs.appendFile("assessmentResults.txt", JSON.stringify(req.body), function(err) {
-        if (err) {
-            console.log(err);
-        }
-        res.sendFile(__dirname + '/thankyou.html') //res.send(req.body.optradio);
-    });
-})
+// Look inside /routes/index.js for the code that handles requests
+app.use('/', require("./routes/index"));
+
 
 //socket comms
 var udp_server = dgram.createSocket('udp4', function(msg, rinfo) {

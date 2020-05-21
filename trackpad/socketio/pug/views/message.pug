@@ -1,0 +1,18 @@
+html
+    head
+        meta(charset="utf-8")
+        title Usability Testing Administration Page
+
+        include ../partials/bootstrap.pug
+
+    body
+        include ../partials/header.pug
+            //- The next paragraph is indented so it is considered part of the div in hearder.pug
+            hr(class="my-4")
+            a(class="btn btn-secondary btn-sm" href="/" role="button") Start over
+
+        div(class="container")
+            if error
+                h3 Oops. Something went wrong
+            else 
+                h3 Thank you. Your assessments have been recorded.
