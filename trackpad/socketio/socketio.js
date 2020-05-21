@@ -12,8 +12,6 @@ let remote_osc_ip;
 
 const PORT      = 8080;
 
-let variations = [];  // Store variations
-
 // ---------------- TODO? ----------------- 
 // Take out id="certificate" from the variations.pug
 
@@ -24,15 +22,20 @@ app.set('views', "./pug/views");
 // Serve static files
 app.use(express.static('./')); //current directory is root
 
+// const shuffler = require("./resources/fisher-yates");
+
+// app.locals.variation = shuffler(require("./variations/variaton.json"));
+
 // Read the variations folder to get the different website orderings
 fs.readdir("./variations/", (err, files) => {
+  app.locals.variations = [];
   // Here, each json object is transformed into a js object and pushed to my restaurantData array
   files.forEach(filename => {
       const jsonToJs = require("./variations/" + filename);
-      variations.push(jsonToJs);
-
-      app.locals.variations = variations;
+      app.locals.variations.push(jsonToJs);
   });
+
+  app.locals.variations = shuffler(app.locals.variations);
 });
 
 //handle form data
