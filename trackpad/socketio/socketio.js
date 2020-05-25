@@ -3,7 +3,6 @@ const express   = require('express');
 const app       = express();
 const server    = http.createServer(app);
 const io        = require('socket.io').listen(server);
-const fs        = require('fs');
 
 const osc       = require('osc-min');
 const dgram     = require('dgram');
@@ -22,21 +21,9 @@ app.set('views', "./pug/views");
 // Serve static files
 app.use(express.static('./')); //current directory is root
 
-// const shuffler = require("./resources/fisher-yates");
-
-// app.locals.variation = shuffler(require("./variations/variaton.json"));
-
-// Read the variations folder to get the different website orderings
-fs.readdir("./variations/", (err, files) => {
-  app.locals.variations = [];
-  // Here, each json object is transformed into a js object and pushed to my restaurantData array
-  files.forEach(filename => {
-      const jsonToJs = require("./variations/" + filename);
-      app.locals.variations.push(jsonToJs);
-  });
-
-  app.locals.variations = shuffler(app.locals.variations);
-});
+// shuffle array of websites 
+const shuffler = require("./resources/fisher-yates");
+app.locals.variation = shuffler(require("./resources/websites.json"));
 
 //handle form data
 const bodyParser = require('body-parser'); 
