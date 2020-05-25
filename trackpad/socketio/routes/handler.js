@@ -43,7 +43,9 @@ routes.post('/', function(req, res){
  */
 const sendToDatabase = async(information) => {
     // connect to the cluster 
-    const client = await MongoClient.connect(config.uri, { useUnifiedTopology: true });
+    // const client = await MongoClient.connect(config.uri, { useUnifiedTopology: true });
+
+    const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
   
     // Get the respective collection
     const collection = client.db("Test").collection("TestData");
