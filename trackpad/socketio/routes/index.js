@@ -1,8 +1,10 @@
 const routes = require('express').Router();
 
 routes.get('/', (req, res) => {
-    res.render("index", {});
+    res.render("home", {});
 })
+
+routes.use("/login", require("./login"));
 
 routes.use("/variation", require("./variation"));
 

@@ -11,6 +11,23 @@ let remote_osc_ip;
 
 const PORT      = 8080;
 
+
+const session   = require('express-session');                     // Manage the session data for a client
+const MongoDBStore = require('connect-mongodb-session')(session); //require module, pass it the session module
+
+const sessionStore = new MongoDBStore({                           // Use MongoDB to store the session data
+  uri: 'mongodb://localhost:27017/Test',
+  collection: 'sessiondata'
+});
+
+// Consider:
+// resave -> https://www.npmjs.com/package/express-session#resave
+// saveUninitialized -> https://www.npmjs.com/package/express-session#saveuninitialized
+app.use(session({ secret: '', store: sessionStore, cookie:{maxAge: 60000}, resave: true, saveUninitialized: true}));
+
+const MongoClient = require('mongodb').MongoClient;
+app.locals.client = new MongoClient('mongodb://localhost:27017', { useUnifiedTopology: true });
+
 // ---------------- TODO? ----------------- 
 // Take out id="certificate" from the variations.pug
 
@@ -20,10 +37,6 @@ app.set('views', "./pug/views");
 
 // Serve static files
 app.use(express.static('./')); //current directory is root
-
-// shuffle array of websites 
-const shuffler = require("./resources/fisher-yates");
-app.locals.variation = shuffler(require("./resources/websites.json"));
 
 //handle form data
 const bodyParser = require('body-parser'); 
@@ -80,7 +93,8 @@ io.on('connection', function(socket) {
 
 });
 
-//port bindings
+
+// Port bindings
 server.listen(PORT, err=>{ 
   if (err) console.log(err)
   else console.log(`=====Express Server listening on port ${PORT}======`)

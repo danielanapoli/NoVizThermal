@@ -4,8 +4,8 @@ const routes = require('express').Router();
 const Response  = require("../resources/Response.js");
 
 // MongoDB conection stuff
-const MongoClient = require('mongodb').MongoClient;
-const config      = require('../resources/config.json');
+//const MongoClient = require('mongodb').MongoClient;
+//const config      = require('../resources/config.json');
 
 
 /* REMEMBER: If you want to add a new website to the survey, go through the next steps:
@@ -13,16 +13,17 @@ const config      = require('../resources/config.json');
  *  2. Add a new array with the first element being the URL and the second element the certificate type
  */
 routes.post('/', function(req, res){
-    let participantID = req.body.participantID;
-
-    console.log(req.body);
+    // Indicate participant is finished
+    req.session.inProgress = false;
+    
+    let participantID = req.session.participantID;
 
     let responses = [];
     
     // Write the new reponses 
-    Object.keys(req.app.locals.variation).forEach( (value) => {
+    Object.keys(req.session.variation).forEach( (value) => {
         value = parseInt(value) + 1;
-        let response = new Response(req.app.locals.variation[value - 1][0], 
+        let response = new Response(req.session.variation[value - 1][0], 
                                     participantID, req.body["order" + value], 
                                     req.body['open_site' + value], 
                                     req.body['close_site' + value], 
@@ -33,7 +34,8 @@ routes.post('/', function(req, res){
         responses.push(response.toObject());
     });
 
-    sendToDatabase(responses);
+    // req.app.locals.db.collection("TestData").insertMany(responses);
+    sendToDatabase(responses, req);
 
     res.render('message', {error: false});
 });
@@ -41,11 +43,11 @@ routes.post('/', function(req, res){
 /* This function sends a group of responses to the mongoDB cluster
  * @params array of reponse objects
  */
-const sendToDatabase = async(information) => {
+const sendToDatabase = async(information, request) => {
     // connect to the cluster 
     // const client = await MongoClient.connect(config.uri, { useUnifiedTopology: true });
 
-    const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
+    const client = await request.app.locals.client.connect();
   
     // Get the respective collection
     const collection = client.db("Test").collection("TestData");

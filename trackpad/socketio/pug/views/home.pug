@@ -1,0 +1,23 @@
+html(lang="en")
+
+    head
+        meta(charset="utf-8")
+        title Usability Testing Administration Page
+
+        include ../partials/bootstrap.pug
+
+    body
+        include ../partials/header.pug
+            //- The next paragraph is indented so it is considered part of the div in hearder.pug
+            hr(class="my-4")
+            p This page will help manage the websites you assess for this study. To get started, please choose your assigned variation.
+
+        div(class="container")
+            form(method="post", action="/login")
+                div(class="form-group")
+                    input(class="form-control" type="text" name="participantID" placeholder="Participant ID" required)
+                    //- input(class="form-control" type="text" name="variation" value="" + id hidden)
+                br
+
+                div(class="row justify-content-center")
+                    button(type="submit" class="btn btn-primary") Start
