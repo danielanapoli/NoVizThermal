@@ -1,0 +1,102 @@
+html(lang="en")
+
+    head
+        meta(charset="utf-8")
+        title Usability Testing Administration Page
+
+        //- JS
+        script(src="/socket.io/socket.io.js")
+        script(src="../communication.js")
+
+        include ../partials/bootstrap.pug
+
+    body
+        include ../partials/header.pug
+            //- The next is indented so it is considered part of the div in hearder.pug
+            hr(class="my-4")
+            a(class="btn btn-secondary btn-sm" href="/" role="button") Start over
+
+        div(class="container")
+            div(class="alert alert-warning" role="alert")
+                h3 Before you start! 
+                p To maintain the integrity of our data, you cannot visit a test website more than once. Be sure of your assessment before closing a tab. You will not be able to reopen a test site.
+
+        div(class="container")
+            form(method="post", action="/responseHandler")
+                //- div(class="form-group")
+                    input(class="form-control" type="text" name="participantID" placeholder="Participant ID" required)
+                    //- input(class="form-control" type="text" name="variation" value="" + id hidden)
+                //- br
+
+
+                //- WEBSITE
+                a(href="" + website[0] id="" + website[1] target="_blank" onclick="openSiteHandler(this, " + website[1] + ")"): h3 Website #{counter}
+                input(class="form-control" type="text" name="order" id="order" value = "" + counter hidden)
+                input(class="form-control" type="text" name="open_site" id="open_site" hidden)
+                br
+
+                //- Safe/Unsafe
+                label(class="assessment") The above website is...
+                    input(class="form-control" type="text" name="close_site" id="close_site" hidden)
+
+                    div(class="form-check")
+                        input(class="form-check-input" type="radio" name="assessment_site" id="assessment1" value="high" onclick="closeSiteHandler()" required disabled)
+                        label(class="form-check-label" for="assessment1") High risk
+
+                    div(class="form-check")
+                        input(class="form-check-input" type="radio" name="assessment_site" id="assessment2" value="low" onclick="closeSiteHandler()" required disabled)
+                        label(class="form-check-label" for="assessment2") Low risk
+                br
+
+                //- Confidence Rating
+                label(class="confidence-level") I am confident in my assessment.
+
+                    div(class="form-check")
+                        input(class="form-check-input" type="radio" name="confidence_site" id= "confidence1" value="0" required disabled)
+                        label(class="form-check-label" for="confidence1") 0 - Strongly Disagree
+
+                    div(class="form-check")
+                        input(class="form-check-input" type="radio" name="confidence_site" id="confidence2" value="1" required disabled)
+                        label(class="form-check-label" for="confidence2") 1 - Disagree
+
+                    div(class="form-check")
+                        input(class="form-check-input" type="radio" name="confidence_site" id="confidence3" value="2" required disabled)
+                        label(class="form-check-label" for="confidence3") 2 - Neutral
+
+                    div(class="form-check")
+                        input(class="form-check-input" type="radio" name="confidence_site" id="confidence4" value="3" required disabled)
+                        label(class="form-check-label" for="confidence4") 3 - Agree
+
+                    div(class="form-check")
+                        input(class="form-check-input" type="radio" name="confidence_site" id="confidence5" value="4" required disabled)
+                        label(class="form-check-label" for="confidence5") 4 - Strongly Agree
+                br
+
+                //- Ease Rating
+                label(class="confidence-level") It was easy for me to assess this website.
+
+                    div(class="form-check")
+                        input(class="form-check-input" type="radio" name="ease_site" id="ease1" value="0" required disabled)
+                        label(class="form-check-label" for="ease1") 0 - Strongly Disagree
+
+                    div(class="form-check")
+                        input(class="form-check-input" type="radio" name="ease_site" id="ease2" value="1" required disabled)
+                        label(class="form-check-label" for="ease2") 1 - Disagree
+
+                    div(class="form-check")
+                        input(class="form-check-input" type="radio" name="ease_site" id="ease3" value="2" required disabled)
+                        label(class="form-check-label" for="ease3") 2 - Neutral
+
+                    div(class="form-check")
+                        input(class="form-check-input" type="radio" name="ease_site" id="ease4" value="3" required disabled)
+                        label(class="form-check-label" for="ease4") 3 - Agree
+
+                    div(class="form-check")
+                        input(class="form-check-input" type="radio" name="ease_site" id="ease5" value="4" required disabled)
+                        label(class="form-check-label" for="ease5") 4 - Strongly Agree      
+                br
+
+                hr
+
+                button(type="submit" class="btn btn-primary") Submit Assessments
+                br

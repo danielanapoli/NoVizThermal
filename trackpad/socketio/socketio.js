@@ -20,16 +20,32 @@ const sessionStore = new MongoDBStore({                           // Use MongoDB
   collection: 'sessiondata'
 });
 
+const config = require("./resources/config.json");
+
 // Consider:
 // resave -> https://www.npmjs.com/package/express-session#resave
 // saveUninitialized -> https://www.npmjs.com/package/express-session#saveuninitialized
-app.use(session({ secret: '', store: sessionStore, cookie:{maxAge: 60000}, resave: true, saveUninitialized: true}));
+app.use(session({ secret: config.secret, store: sessionStore, cookie:{maxAge: 60000 * 3}, resave: true, saveUninitialized: true}));
 
-const MongoClient = require('mongodb').MongoClient;
-app.locals.client = new MongoClient('mongodb://localhost:27017', { useUnifiedTopology: true });
+// const MongoClient = require('mongodb').MongoClient;
+// app.locals.client = new MongoClient('mongodb://localhost:27017', { useUnifiedTopology: true });
 
 // ---------------- TODO? ----------------- 
 // Take out id="certificate" from the variations.pug
+// What should be the behaviour of the button Start Over
+
+// Logs all requests to the terminal
+const logger = (req, res, next) => {
+  const formatBlue = str => {
+      const blueBegin = "\x1b[34m";
+      const blueEnd = "\x1b[0m";
+      return `${blueBegin}${str}${blueEnd}`;
+  };
+
+  console.log(formatBlue(req.method + " " + req.originalUrl));
+  next();
+};
+app.use(logger);
 
 // Pug
 app.set('view engine', 'pug');
