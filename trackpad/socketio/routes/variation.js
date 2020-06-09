@@ -1,15 +1,20 @@
 const routes = require('express').Router();
 
-routes.get('/:id', function(req, res) {
-
-    // Check that the variation requested exists
-    if (parseInt(req.params.id) > req.app.locals.variations.length || parseInt(req.params.id) < 1){
-        res.status(404).send("Cannot GET " + req.url + "--> variation does not exist");
-        return;
+routes.get('/', function(req, res) {
+    if (!req.session.participantID) {
+		  res.status(403).send("Unauthorized to access resource");
+		  return;
     }
-  
-    // The given id is reduced by 1 because variations start at 1 and array indexes at 0
-    res.render("variation", {id: parseInt(req.params.id), variation: req.app.locals.variations[parseInt(req.params.id) - 1]});
+
+    if (!req.session.inProgress) {
+      res.send("You have already submitted");
+      return;
+    }
+
+    // Modification to display one website at a time
+    res.render("website", {website:req.session.variation[req.session.counter], counter: (req.session.counter + 1)});
+
+    // res.render("variation", {variation: req.session.variation});
 });
 
 module.exports = routes

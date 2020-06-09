@@ -3,7 +3,6 @@ const express   = require('express');
 const app       = express();
 const server    = http.createServer(app);
 const io        = require('socket.io').listen(server);
-const fs        = require('fs');
 
 const osc       = require('osc-min');
 const dgram     = require('dgram');
@@ -12,8 +11,38 @@ let remote_osc_ip;
 
 const PORT      = 8080;
 
+
+const session   = require('express-session');                     // Manage the session data for a client
+const MongoDBStore = require('connect-mongodb-session')(session); //require module, pass it the session module
+
+const sessionStore = new MongoDBStore({                           // Use MongoDB to store the session data
+  uri: 'mongodb://localhost:27017/Test',
+  collection: 'sessiondata'
+});
+
+const config = require("./resources/config.json");
+
+// Consider:
+// resave -> https://www.npmjs.com/package/express-session#resave
+// saveUninitialized -> https://www.npmjs.com/package/express-session#saveuninitialized
+app.use(session({ secret: config.secret, store: sessionStore, cookie:{maxAge: 60000 * 5}, resave: true, saveUninitialized: true}));
+
 // ---------------- TODO? ----------------- 
 // Take out id="certificate" from the variations.pug
+// What should be the behaviour of the button Start Over
+
+// Logs all requests to the terminal
+const logger = (req, res, next) => {
+  const formatBlue = str => {
+      const blueBegin = "\x1b[34m";
+      const blueEnd = "\x1b[0m";
+      return `${blueBegin}${str}${blueEnd}`;
+  };
+
+  console.log(formatBlue(req.method + " " + req.originalUrl));
+  next();
+};
+app.use(logger);
 
 // Pug
 app.set('view engine', 'pug');
@@ -21,22 +50,6 @@ app.set('views', "./pug/views");
 
 // Serve static files
 app.use(express.static('./')); //current directory is root
-
-// const shuffler = require("./resources/fisher-yates");
-
-// app.locals.variation = shuffler(require("./variations/variaton.json"));
-
-// Read the variations folder to get the different website orderings
-fs.readdir("./variations/", (err, files) => {
-  app.locals.variations = [];
-  // Here, each json object is transformed into a js object and pushed to my restaurantData array
-  files.forEach(filename => {
-      const jsonToJs = require("./variations/" + filename);
-      app.locals.variations.push(jsonToJs);
-  });
-
-  app.locals.variations = shuffler(app.locals.variations);
-});
 
 //handle form data
 const bodyParser = require('body-parser'); 
@@ -93,7 +106,8 @@ io.on('connection', function(socket) {
 
 });
 
-//port bindings
+
+// Port bindings
 server.listen(PORT, err=>{ 
   if (err) console.log(err)
   else console.log(`=====Express Server listening on port ${PORT}======`)

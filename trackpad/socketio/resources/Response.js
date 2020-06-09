@@ -1,8 +1,8 @@
 class Response {
-    constructor(URL, participantID, variation, order, timeOpened, timeClosed, risk, confidence, ease) {
+    constructor(URL, participantID, order, timeOpened, timeClosed, risk, confidence, ease) {
         this.URL = (URL == null) ? null : URL;
         this.participantID = (participantID == null)? null: participantID;
-        this.variation = (variation == null)? null: parseInt(variation);
+        // this.variation = (variation == null)? null: parseInt(variation);
         this.order = (order == null)? null : parseInt(order);
         this.timeOpened = (timeOpened == null)? null: timeOpened;
         this.timeClosed = (timeClosed == null)? null: timeClosed;

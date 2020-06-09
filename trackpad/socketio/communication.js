@@ -27,15 +27,16 @@ function linkDisable(link) {
   link.onclick = function(event) {
      event.preventDefault();
   }
- }  
+}  
 
+/*************************************************************************************************/
 // This function is called when participant clicks on a URL
-function openSiteHandler(link, certificate, id) {
+function openSiteHandler(link, certificate) {
   let currentDate = new Date();
 
   let time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
 
-  document.getElementById("open_site" + id).value = time;
+  document.getElementById("open_site").value = time;
 
   linkDisable(link);
 
@@ -45,30 +46,30 @@ function openSiteHandler(link, certificate, id) {
     heaterON();
   }
 
-  surveyEnabler(id);
+  surveyEnabler();
 }
 
 // This function takes the time when the participant is back from the test website  
-function closeSiteHandler(id) {
+function closeSiteHandler() {
   let currentDate = new Date();
 
   let time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
 
-  document.getElementById("close_site" + id).value = time;
+  document.getElementById("close_site").value = time;
 
   heaterOFF();
 }
 
 // This function abilitates the questions for the clicked website
-function surveyEnabler(websiteID) {
-  for (let i = 1; i <= 12; ++i) {
-    console.log("Result: " + i * (websiteID * length));
+function surveyEnabler() {
+  for (let i = 1; i<= 5; ++i) {
     if (i < 3) {
-      document.getElementById( ("assessment" + i) + websiteID).disabled = false;
-    } else if (3 <= i && i < 8) {
-      document.getElementById( ("confidence" + i) + websiteID).disabled = false;
-    } else if (8 <= i && i <= 12) {
-      document.getElementById( ("ease" + i) + websiteID).disabled = false;
+      document.getElementById("assessment" + i).disabled = false;
     }
+
+    document.getElementById("confidence" + i).disabled = false;
+    document.getElementById("ease" + i).disabled = false;
   }
 }
+
+/*************************************************************************************************/
