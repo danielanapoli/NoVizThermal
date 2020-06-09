@@ -25,10 +25,7 @@ const config = require("./resources/config.json");
 // Consider:
 // resave -> https://www.npmjs.com/package/express-session#resave
 // saveUninitialized -> https://www.npmjs.com/package/express-session#saveuninitialized
-app.use(session({ secret: config.secret, store: sessionStore, cookie:{maxAge: 60000 * 3}, resave: true, saveUninitialized: true}));
-
-// const MongoClient = require('mongodb').MongoClient;
-// app.locals.client = new MongoClient('mongodb://localhost:27017', { useUnifiedTopology: true });
+app.use(session({ secret: config.secret, store: sessionStore, cookie:{maxAge: 60000 * 5}, resave: true, saveUninitialized: true}));
 
 // ---------------- TODO? ----------------- 
 // Take out id="certificate" from the variations.pug

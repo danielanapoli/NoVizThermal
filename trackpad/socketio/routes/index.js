@@ -10,6 +10,4 @@ routes.use("/variation", require("./variation"));
 
 routes.use("/handler", require("./handler"));
 
-routes.use("/responseHandler", require("./responseHandler"));
-
 module.exports = routes
