@@ -31,9 +31,9 @@ routes.post('/', function(req, res){
         response = response.toObject();
 
     } catch (err) {
-        res.send("Session Expired");
+        // res.send("Session Expired");
+        res.render('message', {error: true});
         return;
-        // res.render('message', {error: true});
     }
 
     sendToDatabase(response);
