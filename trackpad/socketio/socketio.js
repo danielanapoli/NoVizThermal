@@ -66,9 +66,10 @@ let counter = 0
 app.locals.udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
  
   let osc_message;
+  
   try {
     osc_message = osc.fromBuffer(msg);
-    if (counter % 50 == 1) {
+    if (counter % 500 == 1) {
       console.log(osc_message);
     }
 
@@ -77,6 +78,7 @@ app.locals.udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
   } catch(err) {
     return console.log('Could not decode OSC message');
   }
+
   if(osc_message.address != '/socketio') {
     return console.log('Invalid OSC address');
   }
