@@ -8,12 +8,12 @@ socket.on('osc', function (data) {
   }
 });
 
-function heaterON() {
-  console.log("heaterON() called")
-  socket.emit('browser', {
-    x: 1 || 0
-  });
-}
+// function heaterON() {
+//   console.log("heaterON() called")
+//   socket.emit('browser', {
+//     x: 1 || 0
+//   });
+// }
 
 function heaterOFF() {
   console.log("heaterOFF() called")
@@ -31,36 +31,28 @@ function linkDisable(link) {
 
 /*************************************************************************************************/
 // This function is called when participant clicks on a URL
-function openSiteHandler(link, certificate) {
+function openSiteHandler(link) {
+  // Register the time the website was opened
   let currentDate = new Date();
-
   let time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
-
   document.getElementById("open_site").value = time;
 
   linkDisable(link);
-
-  if (certificate === "evCert") {
-    heaterOFF();
-  } else if (certificate === "http") {
-    heaterON();
-  }
 
   surveyEnabler();
 }
 
 // This function takes the time when the participant is back from the test website  
 function closeSiteHandler() {
+  // Register the time when participant answers first question
   let currentDate = new Date();
-
   let time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
-
   document.getElementById("close_site").value = time;
 
   heaterOFF();
 }
 
-// This function abilitates the questions for the clicked website
+// This function enables the questions for the clicked website
 function surveyEnabler() {
   for (let i = 1; i<= 5; ++i) {
     if (i < 3) {

@@ -1,8 +1,8 @@
 [
-    ["https://www.braintreegateway.com/login", "evCert"],
-    ["https://vdidr.fimbank.com/vpn/index.html", "evCert"],
-    ["http://southvalleyroofing.com/", "http"],
-    ["http://www.topclassair.com/", "http"],
-    ["http://booking.aviwest.com/login", "http"],
-    ["https://www.buyrailings.com/", "evCert"]
+    ["https://www.braintreegateway.com/login"],
+    ["https://vdidr.fimbank.com/vpn/index.html"],
+    ["http://southvalleyroofing.com/"],
+    ["http://www.topclassair.com/"],
+    ["http://booking.aviwest.com/login"],
+    ["https://www.buyrailings.com/"]
 ]
