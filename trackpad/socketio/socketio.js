@@ -60,8 +60,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bo
 app.use('/', require("./routes/index"));
 
 
-let counter = 0
-
 // socket comms
 app.locals.udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
  
@@ -69,11 +67,6 @@ app.locals.udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
   
   try {
     osc_message = osc.fromBuffer(msg);
-    if (counter % 500 == 1) {
-      console.log(osc_message);
-    }
-
-    counter += 1;
 
   } catch(err) {
     return console.log('Could not decode OSC message');
@@ -85,7 +78,6 @@ app.locals.udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
   
   app.locals.remote_osc_ip = rinfo.address;
 
-  // Is this being sent to processing through socket.io?
   // io.emit('osc', {
   //   x: parseInt(osc_message.args[0].value) || 0
   // });
