@@ -23,16 +23,16 @@ public int input = 2;
 void setup() 
 {
   // Starting the serial communication, the baudrate and the com port should be same as on the Arduino side.
-  //Serial serial = new Serial(this, "COM3", 9600);
+  Serial serial = new Serial(this, "COM3", 9600);
 
   //  Ininialize the ValueReceiver and ValueSender with this (to hook it to your sketch)
   //  and the serial interface you want to use.
-  //sender = new ValueSender(this, serial);
-  //receiver = new ValueReceiver(this, serial);
+  sender = new ValueSender(this, serial);
+  receiver = new ValueReceiver(this, serial);
 
   // Synchronizing the variables as on the Arduino side. The order should be same.
-  //sender.observe("output");
-  //receiver.observe("input");
+  sender.observe("output");
+  receiver.observe("input");
 
   // Starting the OSC Communication. listen on port 9999, return messages on port 9998
   oscP5 = new OscP5(this, 9999); 

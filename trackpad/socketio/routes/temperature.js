@@ -15,19 +15,22 @@ routes.post('/', (req, res) => {
         return;
     }
     
-    // Prepare the message to send 
-    let osc_msg = osc.toBuffer({
-        oscType: 'message',
-        address: '/socketio',
-        args:[{ 
-          type: 'integer',
-          value: parseInt(req.body.code) || 0
-        }]
-    });
-
-    // Send message to processing
-    req.app.locals.udp_server.send(osc_msg, 0, osc_msg.length, 9999, req.app.locals.remote_osc_ip);
-    console.log('Sent OSC message to %s:9999', req.app.locals.remote_osc_ip);
+    // Arduino does not yet handle Domain validated certificates (which are represented by number 3)
+    if (req.body.code !== 3) {
+        // Prepare the message to send 
+        let osc_msg = osc.toBuffer({
+            oscType: 'message',
+            address: '/socketio',
+            args:[{ 
+              type: 'integer',
+              value: parseInt(req.body.code) || 0
+            }]
+        });
+    
+        // Send message to processing
+        req.app.locals.udp_server.send(osc_msg, 0, osc_msg.length, 9999, req.app.locals.remote_osc_ip);
+        console.log('Sent OSC message to %s:9999', req.app.locals.remote_osc_ip);
+    }
 });
 
 // Change the colour of the terminal messages
