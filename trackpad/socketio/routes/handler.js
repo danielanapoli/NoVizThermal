@@ -16,11 +16,11 @@ routes.post('/', function(req, res){
     let participantID = req.session.participantID;
     let counter       = req.session.counter;
     let response;
-    
+
     // Write the new reponses 
     try {
 
-        response = new Response(req.session.variation[counter][0], 
+        response = new Response(req.session.variation[counter], 
                                         participantID, req.body["order"], 
                                         req.body['open_site'], 
                                         req.body['close_site'], 

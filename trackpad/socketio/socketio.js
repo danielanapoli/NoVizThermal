@@ -25,11 +25,7 @@ const config = require("./resources/config.json");
 // Consider:
 // resave -> https://www.npmjs.com/package/express-session#resave
 // saveUninitialized -> https://www.npmjs.com/package/express-session#saveuninitialized
-app.use(session({ secret: config.secret, store: sessionStore, cookie:{maxAge: 60000 * 3}, resave: true, saveUninitialized: true}));
-
-// ---------------- TODO? ----------------- 
-// Take out id="certificate" from the variations.pug
-// What should be the behaviour of the button Start Over
+app.use(session({ secret: config.secret, store: sessionStore, cookie:{maxAge: 60000 * 3}, resave: true, saveUninitialized: false}));
 
 // Logs all requests to the terminal in colour blue
 const logger = (req, res, next) => {
