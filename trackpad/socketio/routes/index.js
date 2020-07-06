@@ -12,4 +12,6 @@ routes.use("/temperature", require("./temperature"));
 
 routes.use("/handler", require("./handler"));
 
+routes.use("/end", require("./end"));
+
 module.exports = routes

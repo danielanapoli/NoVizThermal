@@ -14,7 +14,7 @@ html(lang="en")
         include ../partials/header.pug
             //- The next is indented so it is considered part of the div in hearder.pug
             hr(class="my-4")
-            a(class="btn btn-secondary btn-sm" href="/" role="button") Start over
+            a(class="btn btn-secondary btn-sm" href="/" role="button" onclick="endSession()") Start over
 
         div(class="container")
             div(class="alert alert-warning" role="alert")
@@ -23,11 +23,6 @@ html(lang="en")
 
         div(class="container")
             form(method="post", action="/handler")
-                //- div(class="form-group")
-                    input(class="form-control" type="text" name="participantID" placeholder="Participant ID" required)
-                    //- input(class="form-control" type="text" name="variation" value="" + id hidden)
-                //- br
-
 
                 //- WEBSITE
                 a(href="" + website target="_blank" onclick="openSiteHandler(this)"): h3 Website #{counter}

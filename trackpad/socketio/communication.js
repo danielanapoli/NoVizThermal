@@ -64,4 +64,13 @@ function surveyEnabler() {
   }
 }
 
+// Make the Start Over button able to end the session
+function endSession() {
+  // Make the POST request
+  let update = new XMLHttpRequest();
+  update.open("POST", "/end");
+  update.setRequestHeader("Content-type", "application/json")
+	update.send(JSON.stringify({"participantID": ""}));
+}
+
 /*************************************************************************************************/

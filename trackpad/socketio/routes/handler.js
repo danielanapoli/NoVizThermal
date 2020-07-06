@@ -28,27 +28,25 @@ routes.post('/', function(req, res){
                                         req.body['confidence_site'], 
                                         req.body['ease_site']);
 
-        response = response.toObject();
+        sendToDatabase(response.toObject());
+
+        // Adjust counter to move on to the next website
+        req.session.counter += 1;
+
+        // Redirect to next website or terminate 
+        if (req.session.counter >= req.session.variation.length) {
+            // Invalidate session when participant is done
+            req.session.inProgress = false;
+            req.session.participantID = "";
+            res.render('message', {error: false});
+        } else {
+            res.redirect('/variation');
+        }
 
     } catch (err) {
         // res.send("Session Expired");
         res.render('message', {error: true});
         return;
-    }
-
-    sendToDatabase(response);
-
-    // Adjust counter to move on to the next website
-    req.session.counter += 1;
-
-    // Redirect to next website or terminate 
-    if (req.session.counter >= req.session.variation.length) {
-        // Invalidate session when participant is done
-        req.session.inProgress = false;
-        req.session.participantID = "";
-        res.render('message', {error: false});
-    } else {
-        res.redirect('/variation');
     }
 });
 

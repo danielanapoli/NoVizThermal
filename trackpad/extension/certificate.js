@@ -61,7 +61,7 @@ async function logSubject(details) {
             try {
                 let xhr = new XMLHttpRequest();
                 xhr.open("POST", "http://localhost:8080/temperature");
-                xhr.setRequestHeader("Content-Type", "application/json")
+                xhr.setRequestHeader("Content-Type", "application/json");
                 xhr.send(JSON.stringify(information));
             } catch (err) {
                 console.log("ERROR: " + err);
