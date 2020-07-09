@@ -18,31 +18,7 @@ async function logSubject(details) {
                 {"certificateChain": true}
             );
     
-            /****************  Print information *******************/
-            // console.log("ERROR MESSAGE: " + securityInfo.errorMessage);
-            // console.log("STATE: " + securityInfo.state);
-            // console.log("EV: " + securityInfo.isExtendedValidation);
-            // console.log("Not Valid: " + securityInfo.isNotValidAtThisTime);
-            // console.log("Untrusted: " + securityInfo.isUntrusted);
-            // console.log("WEAKNESS: " + securityInfo.weaknessReasons);
-    
-            // if (securityInfo.hasOwnProperty("certificates")) {
-            //     console.log("CERTIFICATES: ");
-            //     securityInfo.certificates.forEach(element => {
-            //         console.log("\t" + element.issuer);
-            //         let date = new Date();
-    
-            //         date.setTime(element.validity.start);
-            //         console.log("\t" + date);
-    
-            //         date.setTime(element.validity.end);
-            //         console.log("\t" + date);
-            //     });
-            // }
-
-            /****************  Print information *******************/
-    
-            // Tentative process
+            // Determine the risk level of the website's certificate
             if (securityInfo.state === "insecure") {
                 information["URL"]  = details.url;
                 information.colour  = "red";
@@ -56,7 +32,8 @@ async function logSubject(details) {
                 information.colour = "yellow";
                 information["code"] = 3;
             }
-    
+
+            
             // Send colour to the web app server
             try {
                 let xhr = new XMLHttpRequest();
@@ -78,6 +55,24 @@ browser.webRequest.onHeadersReceived.addListener(logSubject,
     // Trigger events for all the main pages (not their resources)
     {urls: ["<all_urls>"], types: ["main_frame"]},
 
-    // We may not need this as we are not modifying the request (this makes it synchronous)
     ["blocking"]
 );
+
+/******************************** Tabs testing  ********************************/
+let importantTab;
+
+browser.tabs.onCreated.addListener( tab => {
+    console.log("TabID: " + tab.id);
+
+    importantTab = tab.id;
+});
+
+browser.tabs.onRemoved.addListener( (tabID, removeInfo) => {
+    if (tabID == importantTab) {
+        console.log("Send message to take the time");
+    } else {
+        console.log("Don't do anything");
+    }
+});
+
+/*******************************************************************************/

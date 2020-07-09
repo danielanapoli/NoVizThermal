@@ -17,13 +17,13 @@ ValueSender sender;
 ValueReceiver receiver; 
 
 // The below variables will be syncronized with the Arduino and they should be same on the both sides.
-public int output;
-public int input = 2;
+public int output;    // This is changed by OSC messages from the browser
+public int input = 2;     // This is changed by Arduino
 
 void setup() 
 {
   // Starting the serial communication, the baudrate and the com port should be same as on the Arduino side.
-  Serial serial = new Serial(this, "/dev/cu.usbmodem142401", 9600);
+  Serial serial = new Serial(this, "/dev/cu.usbmodem141201", 9600);
 
   //  Ininialize the ValueReceiver and ValueSender with this (to hook it to your sketch)
   //  and the serial interface you want to use.
@@ -46,11 +46,13 @@ void draw() {
   if (input == 2) {
     sendOsc();
   }
-  print("input: ");
-  println(input);
+  
+  
+  //print("input: ");
+  //println(input);
 }
 
-// Function to send OSC messages to browser
+// Function to send OSC messages to browser - ARE WE REALLY SENDING STUFF BACK TO THE SERVER? 
 void sendOsc() {
   OscMessage msg = new OscMessage("/socketio");  // tell the address
   msg.add((float)input); // add the message
@@ -62,6 +64,9 @@ void oscEvent(OscMessage theOscMessage) {
   if (theOscMessage.checkAddrPattern("/socketio") == true) {
     // Receiving the output from browser
     output = theOscMessage.get(0).intValue();  
+    
+    print("Input was: ");
+    println(input);
 
     print("output: ");
     println(output);

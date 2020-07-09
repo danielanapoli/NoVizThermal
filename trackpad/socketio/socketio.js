@@ -65,11 +65,11 @@ app.locals.udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
     osc_message = osc.fromBuffer(msg);
 
   } catch(err) {
-    return console.log('Could not decode OSC message');
+    console.log('Could not decode OSC message');
   }
 
   if(osc_message.address != '/socketio') {
-    return console.log('Invalid OSC address');
+    console.log('Invalid OSC address');
   }
   
   app.locals.remote_osc_ip = rinfo.address;
@@ -81,8 +81,11 @@ app.locals.udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
 
 /******************* Port bindings *******************/
 server.listen(PORT, err=>{ 
-  if (err) console.log(err)
-  else console.log(`=====Express Server listening on port ${PORT}======`)
+  if (err) {
+    console.log(err)
+  } else{
+    console.log(`=====Express Server listening on port ${PORT}======`)
+  }
 });
 
 app.locals.udp_server.bind(9998);
