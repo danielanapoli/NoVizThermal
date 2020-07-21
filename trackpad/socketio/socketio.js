@@ -38,7 +38,7 @@ const logger = (req, res, next) => {
   console.log(formatBlue(req.method + " " + req.originalUrl));
   next();
 };
-//app.use(logger);
+app.use(logger);
 
 // Pug
 app.set('view engine', 'pug');
@@ -74,7 +74,7 @@ app.locals.udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
   
   app.locals.remote_osc_ip = rinfo.address;
 
-  console.log(osc_message.args[0].value);
+  // console.log(osc_message.args[0].value);
 
   // io.emit('osc', {
   //   x: parseInt(osc_message.args[0].value) || 0

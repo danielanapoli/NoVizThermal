@@ -52,7 +52,7 @@ void draw() {
   //println(input);
 }
 
-// Function to send OSC messages to browser - ARE WE REALLY SENDING STUFF BACK TO THE SERVER? 
+// Function to send OSC messages to browser 
 void sendOsc() {
   OscMessage msg = new OscMessage("/socketio");  // tell the address
   msg.add((float)input); // add the message
