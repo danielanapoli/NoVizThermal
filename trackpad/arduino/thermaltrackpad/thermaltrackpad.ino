@@ -17,9 +17,6 @@
 #include <Wire.h>
 int tmp102Address = 0x48;   // Breakout sensor
 
-//// Test using TMP102 library from https://learn.sparkfun.com/tutorials/tmp102-digital-temperature-sensor-hookup-guide/all
-//#include <SparkFunTMP102.h>
-
 #include <VSync.h>
 ValueReceiver<1> receiver;  // Receiver Object
 ValueSender<1> sender;      // Sender Object
@@ -34,20 +31,15 @@ const int pinUP = 225;
 const int pinDOWN = 0;
 const int DANGER = 25;
 
-
-// NOTES
-// 2. Change the activation of the yellow pin so we know whenever the Arduino is interpreting a message
-// 3. Does Arduino need to communicate back to Processing?
-
 void setup() {
   Serial.begin(9600);
-  Wire.begin();
 
   //set up PINS
+  Wire.begin();
   pinMode(green, OUTPUT); 
   pinMode(yellow, OUTPUT);
   pinMode(red, OUTPUT);
-  pinMode(fetPin, OUTPUT);
+  pinMode(fetPin, OUTPUT); 
 
   //set up comms
   receiver.observe(output);
@@ -55,40 +47,29 @@ void setup() {
 }
 
 void loop() {
-  receiver.sync();                //get output from processing
-  
+  receiver.sync();  //get output from processing
   if (output == 1){
-    analogWrite(fetPin, pinUP);   //turn heater on
+    analogWrite(fetPin, pinUP); //turn heater on
     Serial.print("pinUP");
-    digitalWrite(yellow, HIGH);   //turn indicator on
+    digitalWrite(yellow, HIGH); //turn indicator on
     input = 1;
-    
   } else if (output == 2) {
     analogWrite(fetPin, pinDOWN); //turn heater off
     Serial.print("pinDOWN");
-    digitalWrite(yellow, HIGH);   //turn indicator on
+    digitalWrite(yellow, LOW); //turn indicator off
     input = 2;
-    
   } else {
     analogWrite(fetPin, pinDOWN); //keep heater off by default
-    digitalWrite(yellow, LOW);    //turn indicator off
-    input = 3;
   }
-  
   sender.sync();
   
   //NOTE: the getTemperature is not accurate
-  float currentVersion = getTemperature();
-//  double testVersion   = readSensor();
+  float celsius = getTemperature();
+  Serial.print("Celsius: ");
+  Serial.print(celsius);
+  Serial.print("\n");
 
-  Serial.print("Current: ");
-  Serial.println(currentVersion);
-//  Serial.print("--------");
-//  Serial.print("Test: ");
-//  Serial.println(testVersion);
-  
-
-  if(currentVersion >= DANGER){
+  if(celsius >= DANGER){
     //turn redLED on to signify dangerous temperature 
     digitalWrite(green, LOW);
     digitalWrite(red, HIGH);
@@ -103,12 +84,6 @@ void loop() {
 }
 
 float getTemperature(){
-  Wire.beginTransmission(0x48);
-  
-  Wire.write(0x00);
-  
-  Wire.endTransmission();
-  
   Wire.requestFrom(tmp102Address, 2);
   byte MSB = Wire.read();
   byte LSB = Wire.read();
@@ -117,35 +92,4 @@ float getTemperature(){
   int TemperatureSum = ((MSB << 8) | LSB) >> 4;
   float celsius = TemperatureSum*0.0625;
   return celsius;
-
-}
-
-double readSensor(void) {
-//   This code is taken from Texas Intrument video
-  uint8_t temp[2];
-  
-  int16_t tempc;
-  
-  Wire.beginTransmission(0x48);
-  
-  Wire.write(0x00);
-  
-  Wire.endTransmission();
-  
-  Wire.requestFrom(0x48, 2);
-  
-  if (2 <= Wire.available()) {
-  
-    temp[0] = Wire.read();
-    temp[1] = Wire.read();
-
-
-    temp[1] = temp[1] >> 4;
-
-    tempc = ((temp[0] << 4) | temp[1]);
-
-    return tempc*0.0625;
-    
-  }
-
 }
