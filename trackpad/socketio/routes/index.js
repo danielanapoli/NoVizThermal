@@ -8,6 +8,10 @@ routes.use("/login", require("./login"));
 
 routes.use("/variation", require("./variation"));
 
+routes.use("/temperature", require("./temperature"));
+
 routes.use("/handler", require("./handler"));
+
+routes.use("/end", require("./end"));
 
 module.exports = routes

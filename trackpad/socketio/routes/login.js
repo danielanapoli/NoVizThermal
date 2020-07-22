@@ -5,6 +5,7 @@ routes.post("/", (req, res) => {
     req.session.participantID = req.body.participantID;
     req.session.inProgress    = true;
     req.session.counter       = 0;
+    req.session.history       = new Array();
 
     // shuffle array of websites and assign it to participant's session
     const shuffler = require("../resources/fisher-yates");

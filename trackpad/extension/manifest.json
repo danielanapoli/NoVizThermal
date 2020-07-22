@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+    "name": "Certificate",
+    "version": "1.0",
+
+    "description" : "Get the TLS certificate information of a website",
+
+    "permissions" : [
+        "webRequest",
+        "webRequestBlocking",
+        "tabs",
+        "<all_urls>"
+    ],
+
+    "background" : {
+        "scripts" : ["backgroundScripts/certificate.js"]
+    },
+
+    "browser_action": {
+        "default_title": "Certificate",
+        "default_popup": "popup/information.html"
+    }
+
+}

@@ -16,11 +16,11 @@ routes.post('/', function(req, res){
     let participantID = req.session.participantID;
     let counter       = req.session.counter;
     let response;
-    
+
     // Write the new reponses 
     try {
 
-        response = new Response(req.session.variation[counter][0], 
+        response = new Response(req.session.variation[counter], 
                                         participantID, req.body["order"], 
                                         req.body['open_site'], 
                                         req.body['close_site'], 
@@ -28,27 +28,25 @@ routes.post('/', function(req, res){
                                         req.body['confidence_site'], 
                                         req.body['ease_site']);
 
-        response = response.toObject();
+        sendToDatabase(response.toObject());
+
+        // Adjust counter to move on to the next website
+        req.session.counter += 1;
+
+        // Redirect to next website or terminate 
+        if (req.session.counter >= req.session.variation.length) {
+            // Invalidate session when participant is done
+            req.session.inProgress = false;
+            req.session.participantID = "";
+            res.render('message', {error: false});
+        } else {
+            res.redirect('/variation');
+        }
 
     } catch (err) {
-        res.send("Session Expired");
+        // res.send("Session Expired");
+        res.render('message', {error: true});
         return;
-        // res.render('message', {error: true});
-    }
-
-    sendToDatabase(response);
-
-    // Adjust counter to move on to the next website
-    req.session.counter += 1;
-
-    // Redirect to next website or terminate 
-    if (req.session.counter >= req.session.variation.length) {
-        // Invalidate session when participant is done
-        req.session.inProgress = false;
-        req.session.participantID = "";
-        res.render('message', {error: false});
-    } else {
-        res.redirect('/variation');
     }
 });
 
