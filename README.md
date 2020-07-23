@@ -58,7 +58,8 @@ Using the command line...
 1. Pick the file called **_manifest.json_**
 1. Click on the **_open_** button
 
-### To set up the arduino
+### To set up the Arduino
+1. Follow the picture at the bottom to assemble the hardware
 1. Open the Arduino IDE
 1. Click on the **_File_** button at the top of the screen
 1. Click on the **_Open..._** button
@@ -67,9 +68,21 @@ Using the command line...
 1. Inside the repository, you will find a folder called **_arduino_** that contains a folder called **_thermaltrackpad_**
 1. Pick the file called **_thermaltrackpad.ino_**
 1. Click on the **_open_** button
-
 1. Install the needed libraries
     - Don't forget to find this
+
+### To set up Processing
+1. Open the Processing IDE
+1. Click on the **_File_** button at the top of the screen
+1. Click on the **_Open..._** button
+    - This will pop-up your file system
+1. Use the pop-up to navigate to our repository
+1. Inside the repository, you will find a folder called **_osc_** that contains a folder called **_socketio_**
+1. Pick the file called **_socketio.pde_**
+1. Click on the **_open_** button
+1. Install the needed libraries
+    - Don't forget to find this
+
 
 Then, you can start the web app...
 1. `npm start`
