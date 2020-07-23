@@ -1,4 +1,4 @@
-*/node_modules
+*/socketio/node_modules
 */assessmentResults.txt
 config.json
 results.csv
