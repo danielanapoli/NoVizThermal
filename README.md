@@ -38,7 +38,6 @@ Welcome to the thermaltrackpad project! In the next few lines we will explain wh
     - Several LEDS (for testing circuit only) and 330 ohm resistors
     - Wire, alligator clips, breadboard
 
-
 ### To set up the repository
 Using the command line...
 1. Navigate to the directory where you want to place the repository
@@ -47,6 +46,30 @@ Using the command line...
 1. `npm install`
 1. Look at the file called config-example.json in the resources folder
 1. Create a config.json file following the example and store it in the resources folder
+
+### To set up the extension
+1. Open your Firefox Browser
+1. In the search bar type: `about:debugging`
+1. On the left of the screen, click on the **_This Firefox_** button
+1. Click on the **_Load temporary Add-on..._** button
+    - This will pop-up your file system
+1. Use the pop-up to navigate to our repository
+1. Inside the repository, you will find a folder called **_extension_**
+1. Pick the file called **_manifest.json_**
+1. Click on the **_open_** button
+
+### To set up the arduino
+1. Open the Arduino IDE
+1. Click on the **_File_** button at the top of the screen
+1. Click on the **_Open..._** button
+    - This will pop-up your file system
+1. Use the pop-up to navigate to our repository
+1. Inside the repository, you will find a folder called **_arduino_** that contains a folder called **_thermaltrackpad_**
+1. Pick the file called **_thermaltrackpad.ino_**
+1. Click on the **_open_** button
+
+1. Install the needed libraries
+    - Don't forget to find this
 
 Then, you can start the web app...
 1. `npm start`
