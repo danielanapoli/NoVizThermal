@@ -20,10 +20,13 @@ ValueReceiver receiver;
 public int output;    // This is changed by OSC messages from the browser
 public int input = 2;     // This is changed by Arduino
 
+// Change this variable depending on the port being used by the Arduino
+public String port = "/dev/cu.usbmodem141201";
+
 void setup() 
 {
   // Starting the serial communication, the baudrate and the com port should be same as on the Arduino side.
-  Serial serial = new Serial(this, "/dev/cu.usbmodem141201", 9600);
+  Serial serial = new Serial(this, port, 9600);
 
   //  Ininialize the ValueReceiver and ValueSender with this (to hook it to your sketch)
   //  and the serial interface you want to use.
