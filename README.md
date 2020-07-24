@@ -21,22 +21,6 @@ This prototype was inspired by Wilson et al.'s exploration of thermal feedback, 
 Welcome to the thermaltrackpad project! In the next few lines we will explain what you need to get this working. As we continue with the development of this project, this list may change in the near future. 
 
 ### For this project you will need:
-- **Software**
-    - [Arduino IDE](https://www.arduino.cc/en/Main/Software)
-    - [Processing IDE](https://processing.org/download/)
-    - [MongoDB](https://docs.mongodb.com/manual/installation/)
-    - [Firefox Browser](https://www.mozilla.org/en-CA/firefox/new/)
-    - [NodeJS](https://nodejs.org/en/)
-- **Hardware**
-    - 1 [Electric Heating Pad](https://www.sparkfun.com/products/11289)
-    - 1 [N-Channel MOSFET](https://www.sparkfun.com/products/10213)
-    - 1 [1N4001 Diode or Schottky Diode](https://www.adafruit.com/products/755)
-    - 1 10k ohm resistor
-    - 1 Arduino Uno or equivalent
-    - Solder & soldering tools
-    - [TMP102 digital temperature sensor](https://www.sparkfun.com/products/11931)
-    - Several LEDS (for testing circuit only) and 330 ohm resistors
-    - Wire, alligator clips, breadboard
 
 **Software** | **Hardware**
 -------------|-------------
@@ -45,23 +29,6 @@ Welcome to the thermaltrackpad project! In the next few lines we will explain wh
 [MongoDB](https://docs.mongodb.com/manual/installation/) | 1 [1N4001 Diode or Schottky Diode](https://www.adafruit.com/products/755)
 [Firefox Browser](https://www.mozilla.org/en-CA/firefox/new/) | 1 10k ohm resistor
 [NodeJS](https://nodejs.org/en/) | 1 Arduino Uno or equivalent
-&nbsp; | Solder & soldering tools
-&nbsp; | [TMP102 digital temperature sensor](https://www.sparkfun.com/products/11931)
-&nbsp; | Several LEDS (for testing circuit only) and 330 ohm resistors
-&nbsp; | Wire, alligator clips, breadboard
-
-Type        | Item
-------------|------------
-**Software** | [Arduino IDE](https://www.arduino.cc/en/Main/Software)
-&nbsp; | [Processing IDE](https://processing.org/download/)
-&nbsp; | [MongoDB](https://docs.mongodb.com/manual/installation/)
-&nbsp; | [Firefox Browser](https://www.mozilla.org/en-CA/firefox/new/)
-&nbsp; | [NodeJS](https://nodejs.org/en/)
-**Hardware** | 1 [Electric Heating Pad](https://www.sparkfun.com/products/11289)
-&nbsp; | 1 [N-Channel MOSFET](https://www.sparkfun.com/products/10213)
-&nbsp; | 1 [1N4001 Diode or Schottky Diode](https://www.adafruit.com/products/755)
-&nbsp; | 1 10k ohm resistor
-&nbsp; | 1 Arduino Uno or equivalent
 &nbsp; | Solder & soldering tools
 &nbsp; | [TMP102 digital temperature sensor](https://www.sparkfun.com/products/11931)
 &nbsp; | Several LEDS (for testing circuit only) and 330 ohm resistors
