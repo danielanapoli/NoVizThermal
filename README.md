@@ -38,7 +38,7 @@ Welcome to the thermaltrackpad project! In the next few lines we will explain wh
 Using the command line...
 1. Navigate to the directory where you want to place the repository
 1. `git clone https://github.com/danielanapoli/thermaltrackpad.git`
-1. `cd thermaltrackpad/trackpad/socketio`
+1. `cd thermaltrackpad/trackpad/server`
 1. `npm install`
 1. Look at the file called config-example.json in the resources folder
 1. Create a config.json file following the example and store it in the resources folder
