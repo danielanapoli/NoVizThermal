@@ -14,7 +14,7 @@ This prototype was inspired by Wilson et al.'s exploration of thermal feedback, 
 
 - [Wilson et al.'s exploration of thermal feedback](https://dl.acm.org/doi/pdf/10.1145/3027063.3053127)
 - [Liz Coelho's controllable heater project](https://astronomersanonymous.wordpress.com/2016/04/02/controlling-heating-pads-with-arduino-uno/)
-- [Reginald Watson's Open Sound Control (OSC) web app example](ttps://maker.pro/arduino/projects/learn-how-to-enable-communication-between-an-arduino-and-web-browser)
+- [Reginald Watson's Open Sound Control (OSC) web app example](https://maker.pro/arduino/projects/learn-how-to-enable-communication-between-an-arduino-and-web-browser)
 
 # Documentation
 
