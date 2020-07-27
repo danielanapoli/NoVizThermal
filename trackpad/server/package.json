@@ -5,7 +5,7 @@
     "main": "socketio.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node socketio.js"
+        "start": "node server.js"
     },
     "author": "Daniela Napoli",
     "license": "ISC",

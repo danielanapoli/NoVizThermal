@@ -57,14 +57,14 @@ void draw() {
 
 // Function to send OSC messages to browser 
 void sendOsc() {
-  OscMessage msg = new OscMessage("/socketio");  // tell the address
+  OscMessage msg = new OscMessage("/server");  // tell the address
   msg.add((float)input); // add the message
   oscP5.send(msg, dest); //send the OSC message
 }
 
 // Recieve OSC messages from browser
 void oscEvent(OscMessage theOscMessage) {
-  if (theOscMessage.checkAddrPattern("/socketio") == true) {
+  if (theOscMessage.checkAddrPattern("/server") == true) {
     // Receiving the output from browser
     output = theOscMessage.get(0).intValue();  
     
