@@ -74,7 +74,7 @@ function messageArduino(req, res) {
             // Prepare the message to send 
             let osc_msg = osc.toBuffer({
                 oscType: 'message',
-                address: '/socketio',
+                address: '/server',
                 args:[{ 
                   type: 'integer',
                   value: parseInt(req.body.code) || 0
