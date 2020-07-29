@@ -5,12 +5,11 @@ const Response  = require("../resources/Response.js");
 
 // MongoDB conection stuff
 const MongoClient = require('mongodb').MongoClient;
-//const config      = require('../resources/config.json');
 
 
 /* REMEMBER: If you want to add a new website to the survey, go through the next steps:
  *  1. Go to resources/websites.json
- *  2. Add a new array with the first element being the URL and the second element the certificate type
+ *  2. Add the new URL as a string
  */
 routes.post('/', function(req, res){  
     let participantID = req.session.participantID;
@@ -44,14 +43,15 @@ routes.post('/', function(req, res){
         }
 
     } catch (err) {
-        // res.send("Session Expired");
+        // At this point, the session must have expired
         res.render('message', {error: true});
         return;
     }
 });
 
-/* This function sends a responses to the local mongoDB
- * @params response JSON
+/* This function sends the response to the local mongoDB.
+ * Each response represents the information given for a single website
+ * @params participant's response as JSON
  */
 const sendToDatabase = async(information) => {
     // connect to the cluster 
@@ -60,7 +60,7 @@ const sendToDatabase = async(information) => {
     // Get the respective collection
     const collection = client.db("Test").collection("TestData");
     
-    // Insert the array of new responses
+    // Insert the new response 
     await collection.insertOne(information);
   
     client.close();
