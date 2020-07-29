@@ -99,5 +99,5 @@ Using the command line...
         1. Search for http://localhost:8080/
 1. Make sure that your extension is set up
     - **Note:** Everytime you open the Firefox Browser, you will have to set up the extension again
-1. Run the Processing sketch
 1. Upload the Arduino sketch to the board
+1. Run the Processing sketch
