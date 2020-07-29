@@ -64,8 +64,8 @@ Using the command line...
 1. Inside the repository, you will find a folder called **_arduino_** that contains a folder called **_thermaltrackpad_**
 1. Pick the file called **_thermaltrackpad.ino_**
 1. Click on the **_open_** button
-1. Install the needed libraries
-    - Don't forget to find this
+1. Install the **_VSync.h_** library
+    - You can find instructions here: https://github.com/erniejunior/VSync
 
 ### To set up Processing
 1. Open the Processing IDE
