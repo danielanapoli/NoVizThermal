@@ -66,6 +66,10 @@ Using the command line...
 1. Click on the **_open_** button
 1. Install the **_VSync.h_** library
     - You can find instructions here: https://github.com/erniejunior/VSync
+1. You can now connect the Arduino board to your computer using the USB cable
+1. Go to **_Tools_->_Port_** and choose one to communicate to the board
+
+#### Don't upload the sketch yet! We still have to set up other things
 
 ### To set up Processing
 1. Open the Processing IDE
@@ -78,9 +82,11 @@ Using the command line...
 1. Click on the **_open_** button
 1. Install the needed libraries
     - Don't forget to find this
+1. Make sure that the variable `port` (line 24) is set to the port being used for the Arduino 
+    1. You can check the port in the Arduino IDE by going to **_Tools_->_Port_**
 
 
-##### Once you have set up everything mentioned above, you can start to run everything
+#### Once you have set up everything mentioned above, you can run everything
 1. Get the web app running:
     - Using the command line
         1. Navigate to our repository
@@ -91,12 +97,4 @@ Using the command line...
 1. Make sure that your extension is set up
     - **Note:** Everytime you open the Firefox Browser, you will have to set up the extension again
 1. Run the Processing sketch
-    1. Make sure that the variable `port` (line 24) is set to the port being used for the Arduino 
-        1. You can check the port in the Arduino IDE
-        1. Go to **_Tools_->_Port_** after connecting your Arduino board to your computer using the USB cable
-    1. Cick on the start button
-1. Get the Arduino running
-    1. Connect the Arduino board using the USB cable
-    1. Make sure a port is selected 
-        1. Go to **_Tools_->_Port_** to check the port
-    1. Upload the sketch to the Arduino board
+1. Upload the sketch to the Arduino board
