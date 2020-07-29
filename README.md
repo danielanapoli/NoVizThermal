@@ -23,7 +23,7 @@ Welcome to the thermaltrackpad project! In the next few lines we will explain wh
 ### For this project you will need:
 
 **Software** | **Hardware**
--------------|-------------
+:-------------:|:-------------:
 [Arduino IDE](https://www.arduino.cc/en/Main/Software) | 1 [Electric Heating Pad](https://www.sparkfun.com/products/11289)
 [Processing IDE](https://processing.org/download/) | 1 [N-Channel MOSFET](https://www.sparkfun.com/products/10213)
 [MongoDB](https://docs.mongodb.com/manual/installation/) | 1 [1N4001 Diode or Schottky Diode](https://www.adafruit.com/products/755)
