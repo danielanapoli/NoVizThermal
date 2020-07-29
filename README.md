@@ -97,4 +97,4 @@ Using the command line...
 1. Make sure that your extension is set up
     - **Note:** Everytime you open the Firefox Browser, you will have to set up the extension again
 1. Run the Processing sketch
-1. Upload the sketch to the Arduino board
+1. Upload the Arduino sketch to the board
