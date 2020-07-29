@@ -2,7 +2,6 @@ const http      = require('http');
 const express   = require('express');
 const app       = express();
 const server    = http.createServer(app);
-const io        = require('socket.io').listen(server); // We can eliminate this
 
 const osc       = require('osc-min');
 const dgram     = require('dgram'); 
@@ -73,12 +72,6 @@ app.locals.udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
   }
   
   app.locals.remote_osc_ip = rinfo.address;
-
-  // console.log(osc_message.args[0].value);
-
-  // io.emit('osc', {
-  //   x: parseInt(osc_message.args[0].value) || 0
-  // });
 });
 
 /******************* Port bindings *******************/
