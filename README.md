@@ -80,8 +80,11 @@ Using the command line...
 1. Inside the repository, you will find a folder called **_osc_** that contains a folder called **_processing_**
 1. Pick the file called **_processing.pde_**
 1. Click on the **_open_** button
-1. Install the needed libraries
-    - Don't forget to find this
+1. Install the needed libraries by going to **_Sketch_->_Include Library..._->_Add Library..._**
+    1. Use the filter to look for:
+        - VSync
+        - oscP5
+    1. The install button is at the bottom-right of the screen
 1. Make sure that the variable `port` (line 24) is set to the port being used for the Arduino 
     1. You can check the port in the Arduino IDE by going to **_Tools_->_Port_**
 
