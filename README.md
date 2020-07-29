@@ -78,7 +78,7 @@ Using the command line...
     - This will pop-up your file system
 1. Use the pop-up to navigate to our repository
 1. Inside the repository, you will find a folder called **_osc_** that contains a folder called **_processing_**
-1. Pick the file called **_communications.pde_**
+1. Pick the file called **_processing.pde_**
 1. Click on the **_open_** button
 1. Install the needed libraries
     - Don't forget to find this
