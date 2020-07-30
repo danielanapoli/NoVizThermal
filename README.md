@@ -99,3 +99,7 @@ Using the command line...
     - **Note:** Everytime you open the Firefox Browser, you will have to set up the extension again
 1. Upload the Arduino sketch to the board
 1. Run the Processing sketch
+
+
+# Arduino Circuit
+![Arduino circuit](trackpad/images/thermaltrackpad.png)
