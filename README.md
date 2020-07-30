@@ -53,7 +53,7 @@ Using the command line...
 1. Click on the **_open_** button
 
 ### To set up the Arduino
-1. Follow the picture at the bottom to assemble the hardware
+1. [Follow the picture at the bottom to assemble the hardware](#arduino-circuit)
 1. Open the Arduino IDE
 1. Click on the **_File_** button at the top of the screen
 1. Click on the **_Open..._** button
