@@ -1,4 +1,4 @@
-# Thermaltrackpad
+# NoViz-Thermal
 
 This repository includes all of the code for the NoViz-Thermal prototype we use to explore how non-visual feedback can support users in behaving securely online. 
 
