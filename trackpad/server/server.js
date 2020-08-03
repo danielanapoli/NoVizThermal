@@ -2,7 +2,6 @@ const http      = require('http');
 const express   = require('express');
 const app       = express();
 const server    = http.createServer(app);
-const io        = require('socket.io').listen(server); // We can eliminate this
 
 const osc       = require('osc-min');
 const dgram     = require('dgram'); 
@@ -68,17 +67,11 @@ app.locals.udp_server = dgram.createSocket('udp4', function(msg, rinfo) {
     console.log('Could not decode OSC message');
   }
 
-  if(osc_message.address != '/socketio') {
+  if(osc_message.address != '/server') {
     console.log('Invalid OSC address');
   }
   
   app.locals.remote_osc_ip = rinfo.address;
-
-  // console.log(osc_message.args[0].value);
-
-  // io.emit('osc', {
-  //   x: parseInt(osc_message.args[0].value) || 0
-  // });
 });
 
 /******************* Port bindings *******************/

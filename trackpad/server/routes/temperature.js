@@ -10,12 +10,11 @@ function temperature(req, res) {
 
     // Use a try/catch incase the session has expired. In that case, this code will fail.
     try {
-        // Use session data to keep track of the websites that have already triggered a message to Processing (control for headers received randomly)
+        // Use session data to keep track of the websites that have already triggered a message to Processing
+        // This control is kept due to extension signals being received at seemingly random times
         if (!(req.session.history.includes(req.body.URL))) {
             req.session.history.push(req.body.URL);
     
-    
-            
             /******************* TESTING CODE *******************/
             try {
                 console.log("WEBSITE: ");
@@ -74,7 +73,7 @@ function messageArduino(req, res) {
             // Prepare the message to send 
             let osc_msg = osc.toBuffer({
                 oscType: 'message',
-                address: '/socketio',
+                address: '/server',
                 args:[{ 
                   type: 'integer',
                   value: parseInt(req.body.code) || 0
@@ -91,7 +90,12 @@ function messageArduino(req, res) {
     }
 }
 
-// Change the colour of the terminal messages
+/* Change the colour of the terminal messages.
+ * The colours are meant to represent the URL (represented as a string)
+ *  - green: EV certificates
+ *  - yellow: DV certificates
+ *  - red: http (no certificate)
+ */
 const formatColour = (str, colour) => {
     // Turn colour back to normal at the end of the message
     const colourReset = "\x1b[0m";

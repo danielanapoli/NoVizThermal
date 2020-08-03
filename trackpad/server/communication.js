@@ -1,35 +1,10 @@
-var socket = io.connect();
-
-socket.on('osc', function (data) {
-  if (data.x == 1) {
-    console.log("Heater ON")
-  } else {
-    console.log("Heater OFF")
-  }
-});
-
-// function heaterON() {
-//   console.log("heaterON() called")
-//   socket.emit('browser', {
-//     x: 1 || 0
-//   });
-// }
-
-function heaterOFF() {
-  console.log("heaterOFF() called")
-  socket.emit('browser', {
-    x: 2 || 0
-  });
-}
-
-// disable subsequent clicks
+// Disable subsequent clicks
 function linkDisable(link) {
   link.onclick = function(event) {
      event.preventDefault();
   }
 }  
 
-/*************************************************************************************************/
 // This function is called when participant clicks on a URL
 function openSiteHandler(link) {
   // Register the time the website was opened
@@ -48,8 +23,6 @@ function closeSiteHandler() {
   let currentDate = new Date();
   let time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
   document.getElementById("close_site").value = time;
-
-  heaterOFF();
 }
 
 // This function enables the questions for the clicked website
@@ -72,5 +45,3 @@ function endSession() {
   update.setRequestHeader("Content-type", "application/json")
 	update.send(JSON.stringify({"participantID": ""}));
 }
-
-/*************************************************************************************************/
