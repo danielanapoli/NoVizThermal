@@ -8,8 +8,6 @@ This prototype started as Daniela Napoli's course project for exploring the role
 
 Right now, we're exploring ways to improve thermal feedback and other potential non-visual feedback implementations. If you would like full details about the project, feel free to email: daniela.napoli[@]carleton[dot]ca
 
-> === We stand on the shoulders of giants! ===
-
 This prototype was inspired by Wilson et al.'s exploration of thermal feedback, Liz Coelho's controllable heater project, and Reginald Watson's Open Sound Control (OSC) web app example. Links are included below:
 
 - [Wilson et al.'s exploration of thermal feedback](https://dl.acm.org/doi/pdf/10.1145/3027063.3053127)
