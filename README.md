@@ -23,20 +23,10 @@ Welcome to the thermaltrackpad project! In the next few lines we will explain wh
 ### For this project you will need:
 
 Software: 
-[Arduino IDE](https://www.arduino.cc/en/Main/Software) 
-[Processing IDE](https://processing.org/download/) 
-[MongoDB](https://docs.mongodb.com/manual/installation/) 
-[Firefox Browser](https://www.mozilla.org/en-CA/firefox/new/)
-[NodeJS](https://nodejs.org/en/) 
+[Arduino IDE](https://www.arduino.cc/en/Main/Software), [Processing IDE](https://processing.org/download/), [MongoDB](https://docs.mongodb.com/manual/installation/), [Firefox Browser](https://www.mozilla.org/en-CA/firefox/new/), [NodeJS](https://nodejs.org/en/) 
 
 Hardware:
-1 [Thermoelectric Cooler](https://www.sparkfun.com/products/15082)
-1 [N-Channel MOSFET](https://www.sparkfun.com/products/10213)
-1 [TMP102 digital temperature sensor](https://www.sparkfun.com/products/11931)
-1 10k ohm resistor
-1 Arduino Uno or equivalent
-Three LEDS and 3 330 ohm resistors (for testing)
-Wire, alligator clips, breadboard, etc.
+1 [Thermoelectric Cooler](https://www.sparkfun.com/products/15082), 1 [N-Channel MOSFET](https://www.sparkfun.com/products/10213), 1 [TMP102 digital temperature sensor](https://www.sparkfun.com/products/11931), 1 10k ohm resistor, 1 Arduino Uno Rev 3 or equivalent, Three LEDS and 3 330 ohm resistors (for testing), Wire, alligator clips, breadboard
 
 ### To set up the repository
 Using the command line...
