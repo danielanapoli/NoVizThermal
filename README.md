@@ -1,6 +1,6 @@
 # NoViz-Thermal
 
-This repository includes all of the code for the NoViz-Thermal prototype we use to explore how non-visual feedback can support users in behaving securely online. 
+This repository includes all of the code for the NoViz-Thermal prototype we use to explore how non-visual feedback can support users in behaving securely online. We collect TLS data through a Mozilla Firefox browser extension. This data is communicated to our node server and communicated to an Arduino Uno which controls a heating pad. The heating pad changes temperature based on the security information gathered from our browser extension. This system can be used to supplement or replace traditional HTTPS warnings.
 
 === The Team ===
 
