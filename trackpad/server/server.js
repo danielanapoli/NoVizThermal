@@ -13,22 +13,32 @@ const PORT      = 8080;
 // Representation of the Arduino board in the code
 app.locals.arduino = {
   "board"      : new five.Board({debug: false}),
-  "yellow"     : new five.Led(4),
-  "green"      : new five.Led(5),
-  "red"        : new five.Led(6),
-  "peltier"    : new five.Pin({pin: 3}),
-  "thermometer": new five.Thermometer({
-    controller: "TMP102",
-    freq: 30
-  })
+  "yellow"     : "",
+  "green"      : "",
+  "red"        : "",
+  "peltier"    : "",
+  "thermometer": ""
 }
   
 
   
 // Set up Arduino elements when board is connected
-board.on("ready", () => {
+app.locals.arduino.board.on("ready", () => {
+  
+  // Set up thermometer. Notice we are using TMP102 temperature sensor
+  app.locals.arduino.thermometer = new five.Thermometer({
+      controller: "TMP102",
+      freq: 30
+  });
 
-  // Set up thermometer to warn possible overheating
+  // Set up leds and the peltier
+  app.locals.arduino.yellow  = new five.Led(4);
+  app.locals.arduino.green   = new five.Led(5);
+  app.locals.arduino.red     = new five.Led(6);
+  app.locals.arduino.peltier = new five.Pin({pin: 3});
+
+
+  // Track temperature to warn about possible overheating
   app.locals.arduino.thermometer.on("data", temp => {
     console.log(temp.celsius);
 
