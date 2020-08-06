@@ -109,4 +109,32 @@ const formatColour = (str, colour) => {
     }
 };
 
+function tempControl(temp, max) {
+    if (temp.celsius > (max + 2)) {
+      console.log("OFF: " + max);
+      yellow.off();
+      peltier.write(0);
+    } else if (temp.celsius <= max) {
+      console.log("ON: " + max);
+      yellow.on();
+      peltier.write(255);
+    } else {
+      console.log("OFF: " + max);
+      yellow.off();
+      peltier.write(0);
+    }
+  }
+
+function temperature(req, res) {
+    if (req.body.code === 1) {
+      thermometer.on("data", temp => tempControl(temp, 20));
+    } else if (req.body.code === 2) {
+      thermometer.on("data", temp => tempControl(temp, 40));
+    } else if (req.body.code === 3) {
+      thermometer.on("data", temp => tempControl(temp, 30));
+    } else {
+      thermometer.on("data", temp => tempControl(temp, 20));
+    }
+}
+
 module.exports = routes;
