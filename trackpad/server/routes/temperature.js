@@ -25,7 +25,10 @@ function temperature(req, res) {
             /****************************************************/
     
             // Send message to Arduino
-            messageArduino(req, res);
+            // messageArduino(req, res);
+
+            // Control temperature using Johnny-five
+            johnnyFiveTemperature(req);
     
             res.end();
 
@@ -33,11 +36,15 @@ function temperature(req, res) {
 
     } catch (err) {
         console.log("TEMPERATURE: " + err);
+
+        // If it fails, turn off heating device
+        req.body.code = 4;
+        johnnyFiveTemperature(req);
     }
     
 };
 
-/* This middleware function sees if the incoming information is meant to shut down the Arduino
+/* This middleware function sees if the incoming information is meant to shut down the Arduino.
  * If it is, sends the request to Arduino,
  * Otherwirse, it calls the next function
  */
@@ -48,9 +55,11 @@ function turnOffTemperature(req, res, next) {
 
     } else {
         try {
-            
             // Send message to Arduino
-            messageArduino(req, res);
+            // messageArduino(req, res);
+
+            // Turn off heating devive using johnny-five
+            johnnyFiveTemperature(req);
 
             res.end();
 
@@ -60,7 +69,9 @@ function turnOffTemperature(req, res, next) {
     }
 }
 
-// This function sends a message to the Arduino
+/* This function sends a message to Processing.
+ * which communitcates this message to Arduino
+ */
 function messageArduino(req, res) {
     try {
 
@@ -90,11 +101,14 @@ function messageArduino(req, res) {
     }
 }
 
-/* Change the colour of the terminal messages.
- * The colours are meant to represent the URL (represented as a string)
- *  - green: EV certificates
- *  - yellow: DV certificates
- *  - red: http (no certificate)
+/** Change the colour of the terminal messages.
+ *  The colours are meant to represent the URL (represented as a string)
+ *      - green: EV certificates
+ *      - yellow: DV certificates
+ *      - red: http (no certificate)
+ * 
+ *  @param {string} str    - string to display in colour
+ *  @param {string} colour - colour to be used when str is displayed
  */
 const formatColour = (str, colour) => {
     // Turn colour back to normal at the end of the message
@@ -109,31 +123,48 @@ const formatColour = (str, colour) => {
     }
 };
 
-function tempControl(temp, max) {
+/** This function controls the temperature of the heating device
+ *  @param {}
+ *  @param {number}  max - maximum temperature allowed
+ *  @param {Request} req - HTTP request 
+ */
+function tempControl(temp, max, req) {
     if (temp.celsius > (max + 2)) {
-      console.log("OFF: " + max);
-      yellow.off();
-      peltier.write(0);
+        console.log("OFF: " + max);
+        req.app.locals.arduino.yellow.off();
+        req.app.locals.arduino.peltier.write(0);
     } else if (temp.celsius <= max) {
-      console.log("ON: " + max);
-      yellow.on();
-      peltier.write(255);
+        console.log("ON: " + max);
+        req.app.locals.arduino.yellow.on();
+        req.app.locals.arduino.peltier.write(255);
     } else {
-      console.log("OFF: " + max);
-      yellow.off();
-      peltier.write(0);
+        console.log("OFF: " + max);
+        req.app.locals.arduino.yellow.off();
+        req.app.locals.arduino.peltier.write(0);
     }
-  }
+}
 
-function temperature(req, res) {
+/** This function sets up the behaviour of the thermometer.
+ *  The thermometer is what decides when to turn on/off the heating device
+ * 
+ *  @param {Request} req - HTTP request
+ */
+function johnnyFiveTemperature(req) {
+    // This handles no certificate (http)
     if (req.body.code === 1) {
-      thermometer.on("data", temp => tempControl(temp, 20));
+        req.app.locals.arduino.thermometer.on("data", temp => tempControl(temp, 40, req));
+
+    // This handles EV certificates
     } else if (req.body.code === 2) {
-      thermometer.on("data", temp => tempControl(temp, 40));
+        req.app.locals.arduino.thermometer.on("data", temp => tempControl(temp, 20, req));
+
+    // This handles DV certificates
     } else if (req.body.code === 3) {
-      thermometer.on("data", temp => tempControl(temp, 30));
+        req.app.locals.arduino.thermometer.on("data", temp => tempControl(temp, 30, req));
+
+    // This handles off signals
     } else {
-      thermometer.on("data", temp => tempControl(temp, 20));
+        req.app.locals.arduino.thermometer.on("data", temp => tempControl(temp, 20, req));
     }
 }
 

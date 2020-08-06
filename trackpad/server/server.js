@@ -21,7 +21,6 @@ app.locals.arduino = {
 }
   
 
-  
 // Set up Arduino elements when board is connected
 app.locals.arduino.board.on("ready", () => {
   
