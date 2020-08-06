@@ -1,13 +1,46 @@
-const http      = require('http');
-const express   = require('express');
-const app       = express();
-const server    = http.createServer(app);
+const http     = require('http');
+const express  = require('express');
+const app      = express();
+const server   = http.createServer(app);
 
-const osc       = require('osc-min');
-const dgram     = require('dgram'); 
+const osc      = require('osc-min');
+const dgram    = require('dgram');
+const five     = require('johnny-five');
 
 
 const PORT      = 8080;
+
+// Representation of the Arduino board in the code
+app.locals.arduino = {
+  "board"      : new five.Board({debug: false}),
+  "yellow"     : new five.Led(4),
+  "green"      : new five.Led(5),
+  "red"        : new five.Led(6),
+  "peltier"    : new five.Pin({pin: 3}),
+  "thermometer": new five.Thermometer({
+    controller: "TMP102",
+    freq: 30
+  })
+}
+  
+
+  
+// Set up Arduino elements when board is connected
+board.on("ready", () => {
+
+  // Set up thermometer to warn possible overheating
+  app.locals.arduino.thermometer.on("data", temp => {
+    console.log(temp.celsius);
+
+    if (temp.celsius > 40) {
+      app.locals.arduino.green.off();
+      app.locals.arduino.red.on();
+    } else {
+      app.locals.arduino.green.on();
+      app.locals.arduino.red.off();
+    }
+  });
+});
 
 
 const session   = require('express-session');                     // Manage the session data for a client
