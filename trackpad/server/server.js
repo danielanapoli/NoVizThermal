@@ -8,7 +8,7 @@ const dgram    = require('dgram');
 const five     = require('johnny-five');
 
 
-const PORT      = 8080;
+const PORT      = 80;
 
 // Representation of the Arduino board in the code
 app.locals.arduino = {
