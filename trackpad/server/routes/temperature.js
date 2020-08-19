@@ -109,6 +109,8 @@ function messageArduino(req, res) {
  * 
  *  @param {string} str    - string to display in colour
  *  @param {string} colour - colour to be used when str is displayed
+ * 
+ *  @return {string} string in colour given
  */
 const formatColour = (str, colour) => {
     // Turn colour back to normal at the end of the message
@@ -152,19 +154,23 @@ function tempControl(temp, max, req) {
 function johnnyFiveTemperature(req) {
     // This handles no certificate (http)
     if (req.body.code === 1) {
-        req.app.locals.arduino.thermometer.on("data", temp => tempControl(temp, 40, req));
+        // req.app.locals.arduino.thermometer.on("data", temp => tempControl(temp, 40, req));
+        req.app.locals.arduino.temperature = 40;
 
     // This handles EV certificates
     } else if (req.body.code === 2) {
-        req.app.locals.arduino.thermometer.on("data", temp => tempControl(temp, 20, req));
+        // req.app.locals.arduino.thermometer.on("data", temp => tempControl(temp, 20, req));
+        req.app.locals.arduino.temperature = 20;
 
     // This handles DV certificates
     } else if (req.body.code === 3) {
-        req.app.locals.arduino.thermometer.on("data", temp => tempControl(temp, 30, req));
+        // req.app.locals.arduino.thermometer.on("data", temp => tempControl(temp, 30, req));
+        req.app.locals.arduino.temperature = 30;
 
     // This handles off signals
     } else {
-        req.app.locals.arduino.thermometer.on("data", temp => tempControl(temp, 20, req));
+        // req.app.locals.arduino.thermometer.on("data", temp => tempControl(temp, 20, req));
+        req.app.locals.arduino.temperature = 20;
     }
 }
 
