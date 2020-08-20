@@ -6,7 +6,7 @@ This repository includes all of the code for the NoViz-Thermal prototype we use 
 
 This prototype started as Daniela Napoli's course project for exploring the role of embodied cognition in usable security. Sebastian Navas refactored and optimized the web app to what you can see today! 
 
-Right now, we're exploring ways to improve thermal feedback and other potential non-visual feedback implementations. If you would like full details about the project, feel free to email: daniela.napoli[@]carleton[dot]ca
+Right now, we're exploring ways to improve thermal feedback and other potential non-visual feedback implementations. For more info about the project check out our short paper: https://www.usenix.org/system/files/soups2020_poster_napoli.pdf
 
 This prototype was inspired by...
 
