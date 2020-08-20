@@ -49,9 +49,9 @@ routes.post('/', function(req, res){
     }
 });
 
-/* This function sends the response to the local mongoDB.
- * Each response represents the information given for a single website
- * @params participant's response as JSON
+/** This function sends the response to the local mongoDB.
+ *  Each response represents the information given for a single website
+ *  @param {JSON} information - participant's response as JSON
  */
 const sendToDatabase = async(information) => {
     // connect to the cluster 

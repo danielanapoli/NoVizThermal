@@ -1,13 +1,72 @@
-const http      = require('http');
-const express   = require('express');
-const app       = express();
-const server    = http.createServer(app);
+const http     = require('http');
+const express  = require('express');
+const app      = express();
+const server   = http.createServer(app);
 
-const osc       = require('osc-min');
-const dgram     = require('dgram'); 
+const osc      = require('osc-min');
+const dgram    = require('dgram');
+const five     = require('johnny-five');
 
 
 const PORT      = 8080;
+
+// Representation of the Arduino board in the code
+app.locals.arduino = {
+  "board"      : new five.Board({debug: false, repl: false}),
+  "yellow"     : "",
+  "green"      : "",
+  "red"        : "",
+  "peltier"    : "",
+  "thermometer": "",
+  "temperature": ""
+}
+  
+
+// Set up Arduino elements when board is connected
+app.locals.arduino.board.on("ready", () => {
+  
+  // Set up thermometer. Notice we are using TMP102 temperature sensor
+  app.locals.arduino.thermometer = new five.Thermometer({
+      controller: "TMP102",
+      freq: 30
+  });
+
+  // Set up leds and the peltier
+  app.locals.arduino.yellow  = new five.Led(4);
+  app.locals.arduino.green   = new five.Led(5);
+  app.locals.arduino.red     = new five.Led(6);
+  app.locals.arduino.peltier = new five.Pin({pin: 3});
+
+  // Set up initial temperature
+  app.locals.arduino.temperature = 20;
+
+
+  // Track temperature to warn about possible overheating
+  app.locals.arduino.thermometer.on("data", temp => {
+    console.log(temp.celsius);
+
+    // Control green/red led for testing 
+    // Max temperature allowed is 40
+    if (temp.celsius > 40) {
+      app.locals.arduino.green.off();
+      app.locals.arduino.red.on();
+    } else {
+      app.locals.arduino.green.on();
+      app.locals.arduino.red.off();
+    }
+
+    // Control the peliter based on the temperature
+    if (temp.celsius > (app.locals.arduino.temperature + 1)) {
+      console.log("OFF: " + app.locals.arduino.temperature);
+      app.locals.arduino.yellow.off();
+      app.locals.arduino.peltier.write(0);
+    } else if (temp.celsius <= app.locals.arduino.temperature) {
+      console.log("ON: " + app.locals.arduino.temperature);
+      app.locals.arduino.yellow.on();
+      app.locals.arduino.peltier.write(255);
+    }
+  });
+});
 
 
 const session   = require('express-session');                     // Manage the session data for a client
